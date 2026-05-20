@@ -111,3 +111,12 @@ Terminal output is colored by MARIS's state, not yours.
 ## License
 
 MIT
+
+## Paper
+
+**MARIS: A Unified Framework for Emotion-Adaptive Self-Improving Agents with Human-in-the-Loop Clarification and Memory Consolidation**
+
+Author: Hristos Nenkov (May 2026)
+
+- ResearchGate: https://www.researchgate.net/publication/405067204
+- PDF: [paper/maris_paper.pdf](paper/maris_paper.pdf)
