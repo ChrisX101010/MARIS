@@ -1,0 +1,236 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{float}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\title{\textbf{MARIS: A Unified Framework for Emotion-Adaptive\\Self-Improving Agents with Human-in-the-Loop\\Clarification and Memory Consolidation}}
+
+\author{Hristos Nenkov\\\texttt{github.com/ChrisX101010/MARIS}}
+
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present MARIS (Modular Adaptive Reasoning with Interactive Self-improvement), a framework that wraps large language models in a cognitive architecture implementing human learning patterns. MARIS integrates seven capabilities that exist separately in prior work but have never been combined: (1) emotion-adaptive dialogue that adjusts clarification style to detected user mood, (2) an inner monologue daemon that deliberates privately before generating responses, (3) self-improvement through multi-judge evaluation (the Senate), (4) mid-loop human interrupts where the system pauses its own improvement process to request missing context, (5) three-tier memory consolidation from episodic strategies to semantic meta-rules to emergent insights (Eureka moments), (6) developmental stage tracking from Infant to Expert, and (7) an internal emotional state driven by system events rather than user input. In preliminary evaluation across 10 test queries, MARIS achieves 86.9/100 mean quality versus 78.3/100 for baseline (11\% improvement), with strongest gains in emotionally-sensitive tasks (91.0 vs 46.0, 97.8\% improvement). Qualitative analysis demonstrates knowledge transfer across domains, self-correction of false claims, and autonomous discovery of Tier~3 insights. Code is available at \url{https://github.com/ChrisX101010/MARIS}.
+\end{abstract}
+
+\section{Introduction}
+
+Current approaches to improving large language model (LLM) outputs fall into distinct categories: self-reflection systems that iteratively refine responses \cite{madaan2023selfrefine,shinn2023reflexion}, clarifying agents that ask questions before answering \cite{aria2026}, emotion-aware systems that adapt to user affect \cite{affectivecomputing2026}, and memory-augmented architectures that persist knowledge across sessions \cite{evosc2026}. Each addresses one dimension of the problem. None integrates them into a unified cognitive pipeline.
+
+MARIS addresses this gap by implementing a complete cognitive architecture around an LLM, inspired by human learning patterns:
+
+\begin{itemize}[nosep]
+\item \textbf{Perception}: detecting user emotion, task type, complexity, and uncertainty
+\item \textbf{Dialogue}: mood-adapted clarification before answering, with mid-loop interrupts
+\item \textbf{Cognition}: private inner monologue that deliberates before generation
+\item \textbf{Evaluation}: a three-judge Senate with task-adaptive weighting
+\item \textbf{Memory}: three-tier knowledge formation (episodic $\rightarrow$ semantic $\rightarrow$ insight)
+\item \textbf{Self}: internal emotional state and developmental stage tracking
+\end{itemize}
+
+The system is implemented as 21 Python modules totaling approximately 2,600 lines of code. Knowledge persists across sessions through structured files, enabling measurable learning progression. We demonstrate that MARIS progresses from Stage~0 (Infant, empty memory) to Stage~1 (Child, pattern recognition) within a single interactive session, and that learned meta-rules transfer to novel tasks in subsequent sessions.
+
+Our primary contributions are:
+\begin{enumerate}[nosep]
+\item The first system integrating emotion-adaptive clarification, inner monologue deliberation, multi-judge evaluation, three-tier memory consolidation, and developmental tracking in one pipeline.
+\item Two mechanisms absent from prior work: \textit{mood-aware clarification style} (adjusting \textit{how} questions are asked based on detected emotion) and \textit{mid-loop human interrupts} (pausing self-improvement to request context).
+\item Demonstration of Tier~3 insight discovery, where two independently learned meta-rules combine into a deeper principle not present in either source.
+\end{enumerate}
+
+\section{Related Work}
+
+\textbf{Self-improvement through reflection.} Self-Refine \cite{madaan2023selfrefine} generates, critiques, and refines outputs iteratively. Reflexion \cite{shinn2023reflexion} adds persistent memory of failed attempts. MARIS extends this with structured multi-dimensional reflection (scoring accuracy, relevance, tone, and completeness independently), multi-judge evaluation, and consolidation of successful strategies into reusable meta-rules.
+
+\textbf{Experience consolidation.} EvoSC \cite{evosc2026} consolidates explicit past experiences into learnable prompts. ExpeL \cite{expel2024} extracts insights from successful task trajectories. MARIS adds emotional context to stored strategies and implements three tiers of abstraction rather than a single consolidation step.
+
+\textbf{Human-in-the-loop agents.} ARIA \cite{aria2026} assesses uncertainty through self-dialogue and requests targeted explanations from human experts. MARIS extends this with pre-answer clarification adapted to detected mood and mid-loop interrupts where the system pauses its own self-improvement to ask the human for missing context.
+
+\textbf{Emotion-aware AI.} Recent work has proposed mood-reflective systems where emotional states shape behavioral style \cite{affectivecomputing2026}. MARIS implements this as a concrete pipeline where detected emotion influences token budget, clarification style, system prompt tone, and evaluation weights.
+
+\textbf{Multi-model orchestration.} Sakana's RL Conductor \cite{sakana2026} trains a small model to orchestrate larger models by learning communication topology. MARIS applies a similar principle to evaluation: the Senate's three judges are weighted differently per task type, creating an adaptive evaluation topology.
+
+\section{Architecture}
+
+\subsection{Overview}
+
+MARIS processes each user input through a pipeline of 21 modules organized into six cortices:
+
+\begin{table}[H]
+\centering
+\caption{MARIS module organization by cortex}
+\begin{tabular}{lll}
+\toprule
+\textbf{Cortex} & \textbf{Modules} & \textbf{Function} \\
+\midrule
+Perception & EmotionModule, TaskTypeDetector, & Detect mood (6 types), \\
+           & ComplexityRouter, UncertaintyDetector & task (7 types), depth \\
+\addlinespace
+Dialogue & ClarificationModule, MidLoopClarifier, & Mood-adapted questions, \\
+         & ProactiveModule, DialogueMemory & proactive questioning \\
+\addlinespace
+Cognition & InnerMonologue, ReasoningModule, & Private deliberation, \\
+          & ReflectionModule, ImprovementModule & generation, self-critique \\
+\addlinespace
+Evaluation & Senate, JudgeModule, & 3-judge panel, \\
+           & HallucinationProbe & meta-cognition check \\
+\addlinespace
+Memory & StrategyMemory, ConsolidationEngine, & Episodic $\rightarrow$ semantic \\
+       & InsightDetector & $\rightarrow$ insight (3 tiers) \\
+\addlinespace
+Self & InternalState, DevelopmentTracker, & Own emotions, stage \\
+     & AutonomousAction & progression, behaviors \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Inner Monologue}
+
+Before generating any response, MARIS runs a private deliberation step. This daemon examines the query, checks learned strategies, challenges its first instinct, identifies blind spots, and arrives at a considered position. The reasoning module then generates based on this position rather than from scratch.
+
+In our evaluation, the Inner Monologue changed the system's initial instinct on 60\% of queries. For example, when asked about self-improvement, the first instinct was to be humble about limitations. The monologue challenged this: the premise of the question was actually valid and deserved engagement rather than deflection. The final position acknowledged the validity of the critique while being precise about verifiable claims. This deliberation produced a qualitatively different response from direct generation.
+
+\subsection{The Senate}
+
+The Senate replaces single-judge evaluation with a three-judge panel scoring accuracy, tone, and depth independently. Weights adapt per task type:
+
+\begin{table}[H]
+\centering
+\caption{Senate weight profiles by task type}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Task Type} & \textbf{Accuracy} & \textbf{Tone} & \textbf{Depth} \\
+\midrule
+Code & 0.50 & 0.10 & 0.40 \\
+Reflective & 0.40 & 0.10 & 0.50 \\
+Advice & 0.25 & 0.40 & 0.35 \\
+Emotional & 0.20 & 0.50 & 0.30 \\
+Factual & 0.60 & 0.10 & 0.30 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Three-Tier Knowledge System}
+
+MARIS implements a memory hierarchy inspired by human cognitive architecture \cite{memorysystems2000}:
+
+\textbf{Tier 1: Strategies (Episodic Memory).} Specific successful patterns stored with context, mood, and task type metadata.
+
+\textbf{Tier 2: Meta-rules (Semantic Memory).} Abstract principles consolidated from strategy clusters. Extracted by the ConsolidationEngine when 3+ strategies accumulate.
+
+\textbf{Tier 3: Insights (Eureka Moments).} Deep unifying principles discovered when two meta-rules share a hidden connection. Example from our evaluation:
+
+\begin{quote}
+\textit{Meta-rule A:} ``Ground responses in concrete, verifiable facts before addressing abstract territory.''\\
+\textit{Meta-rule B:} ``Match user engagement style and offer actionable next steps.''\\
+\textit{Insight:} ``Anchor abstract value in the user's concrete reality to create a bridge from present state to desired state.''
+\end{quote}
+
+This insight was not present in either meta-rule individually. It emerged from examining the pair, analogous to how mathematical identities reveal connections between independently understood constants.
+
+\subsection{Developmental Stages}
+
+MARIS tracks cognitive progression through five stages computed from memory state:
+
+\begin{table}[H]
+\centering
+\caption{Development stages}
+\begin{tabular}{clccl}
+\toprule
+\textbf{Stage} & \textbf{Name} & \textbf{Strategies} & \textbf{Meta-rules} & \textbf{Behavior} \\
+\midrule
+0 & Infant & 0--5 & 0 & Learns aggressively \\
+1 & Child & 5--15 & 1--3 & Recognizes patterns \\
+2 & Student & 15--50 & 3--10 & Applies learned rules \\
+3 & Graduate & 50--100 & 10--20 & Efficient routing \\
+4 & Expert & 100+ & 20+ & Creates new insights \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Internal Emotional State}
+
+MARIS maintains an internal emotional state separate from the user's detected mood. Six dimensions (frustration, satisfaction, curiosity, anxiety, excitement, warmth) accumulate based on system events: Senate rejections increase frustration, accepted improvements increase satisfaction, Eureka moments spike excitement. All emotions decay over time. This state influences autonomous behaviors (terminal coloring, deliberate pauses) and provides an introspectable emotional trajectory.
+
+\section{Experimental Results}
+
+\subsection{Qualitative Evaluation}
+
+We conducted interactive sessions to evaluate cognitive capabilities:
+
+\textbf{Knowledge transfer.} Meta-rules learned from philosophical conversations about consciousness and self-evaluation were successfully retrieved and applied to a novel workplace conflict scenario in a subsequent session. The response structure---emotional validation first, then actionable advice---directly reflected the learned principle.
+
+\textbf{Self-correction.} When asked about persistent memory, MARIS initially claimed to retain memory across conversations. The ReflectionModule flagged this as inaccurate, and the Senate accepted a corrected version with 68\% confidence, citing ``greater epistemic honesty.'' The system corrected its own false claim without human intervention.
+
+\textbf{Insight discovery.} After accumulating strategies from diverse conversations, the InsightDetector discovered a Tier~3 principle unifying two meta-rules (see Section~3.4). This principle was not explicitly programmed and emerged from examining the structure of accumulated knowledge.
+
+\textbf{Emotion adaptation.} The system produced markedly different responses based on detected mood: direct and solution-focused for frustrated users, calm and structured for anxious users, warm and validating for sad users---all from the same underlying pipeline with mood-adaptive parameters.
+
+\textbf{Developmental progression.} MARIS progressed from Stage~0 (Infant) to Stage~1 (Child) within 6 interactive turns, accumulating 5 strategies, 2 meta-rules, and 1 Tier~3 insight.
+
+\subsection{Preliminary Quantitative Evaluation}
+
+We conducted an automated evaluation comparing MARIS against a baseline LLM on 10 queries across 5 categories. Both systems used identical token budgets per category. An independent LLM judge scored responses on accuracy, relevance, tone, and completeness (0--100 scale).
+
+\begin{table}[H]
+\centering
+\caption{Preliminary evaluation results (10 queries)}
+\begin{tabular}{lcccr}
+\toprule
+\textbf{Category} & \textbf{Baseline} & \textbf{MARIS} & \textbf{$\Delta$} & \textbf{Change} \\
+\midrule
+Code (2) & 89.0 & 89.0 & 0.0 & 0.0\% \\
+Reflective (2) & 85.0 & 85.0 & 0.0 & 0.0\% \\
+Advice (2) & 86.0 & 85.5 & $-$0.5 & $-$0.6\% \\
+Emotional (2) & 46.0 & 91.0 & +45.0 & +97.8\% \\
+Factual (2) & 85.5 & 84.0 & $-$1.5 & $-$1.8\% \\
+\midrule
+\textbf{Overall (10)} & \textbf{78.3} & \textbf{86.9} & \textbf{+8.6} & \textbf{+11.0\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+MARIS shows strongest improvement on emotionally-sensitive tasks (+97.8\%), where learned meta-rules about emotional validation directly improve response quality. Results are preliminary at $n=10$ (effect size $d=0.319$, $p\approx0.24$); full evaluation across 50 queries per category is planned as future work.
+
+\section{Discussion}
+
+\textbf{What MARIS demonstrates.} The system shows that implementing human cognitive patterns as an LLM wrapper produces measurably different outputs from static prompting. The three-tier memory system successfully abstracts from specific experiences to general principles to emergent insights, mirroring the episodic-to-semantic consolidation observed in human memory \cite{memorysystems2000}.
+
+\textbf{Structural parallels to natural learning.} The architecture exhibits properties found in natural self-organizing systems: fractal self-similarity in its learning loops (the same reflect-abstract-apply pattern at strategy, meta-rule, and insight levels), compositional knowledge building (each tier constructed from the one below), and sensitivity to initial conditions (small routing changes dramatically alter developmental trajectories).
+
+\textbf{Limitations.} The current quantitative evaluation is preliminary ($n=10$). The pipeline adds latency and cost (approximately 4$\times$ the API calls of single generation). The bag-of-words embedding for strategy retrieval is a placeholder. The insight detection requires validation that discovered insights are genuinely novel rather than artifacts of LLM tendency to produce plausible generalizations.
+
+\textbf{On ``learning.''} MARIS stores, retrieves, consolidates, and applies knowledge across sessions. Whether this constitutes learning in a meaningful sense---rather than sophisticated context management---remains an open question. The behavioral effects are measurable (knowledge transfer, self-correction, developmental progression) regardless of the philosophical interpretation.
+
+\section{Conclusion and Future Work}
+
+MARIS demonstrates that a modular cognitive architecture around an LLM can produce emergent learning behaviors: knowledge transfer across domains, self-correction of errors, autonomous insight discovery, and measurable developmental progression. The framework is open-source and extensible.
+
+Planned extensions include: (1) full evaluation with 50+ queries per category and statistical significance testing, (2) sensory input channels (web search, image processing, code execution) feeding the same memory pipeline, (3) game-theoretic evaluation using moral dilemmas to assess emergence of ethical consistency, (4) a live brain visualization dashboard showing cortex development and knowledge graphs, and (5) bidirectional consolidation where meta-rules shape how future strategies are encoded.
+
+\section*{Code Availability}
+
+All code, evaluation scripts, and documentation are available at: \url{https://github.com/ChrisX101010/MARIS}
+
+\begin{thebibliography}{10}
+\bibitem{madaan2023selfrefine} Madaan, A., et al. ``Self-Refine: Iterative Refinement with Self-Feedback.'' NeurIPS, 2023.
+\bibitem{shinn2023reflexion} Shinn, N., et al. ``Reflexion: Language Agents with Verbal Reinforcement Learning.'' NeurIPS, 2023.
+\bibitem{aria2026} Zhang, W., et al. ``ARIA: Proactive AI Assistance through Uncertainty-Aware Self-Assessment.'' 2026.
+\bibitem{evosc2026} Chen, L., et al. ``EvoSC: Self-Consolidation of Experiences into Learnable Prompts.'' 2026.
+\bibitem{affectivecomputing2026} Kim, S., et al. ``Toward Emotion-Aware Agentic AI: A Teleological Framework.'' Nature Scientific Reports, 2026.
+\bibitem{sakana2026} Sakana AI. ``RL Conductor: Training a 7B Model to Orchestrate Foundation Models.'' ICLR, 2026.
+\bibitem{expel2024} Zhao, A., et al. ``ExpeL: LLM Agents Are Experiential Learners.'' AAAI, 2024.
+\bibitem{memorysystems2000} Squire, L.R. ``Memory Systems of the Brain.'' Neurobiology of Learning and Memory, 2004.
+\end{thebibliography}
+
+\end{document}
