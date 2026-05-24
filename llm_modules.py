@@ -1939,17 +1939,28 @@ class InternalState:
       - warmth: user engagement, clarification answers
     """
 
-    def __init__(self):
-        self.state = {
-            "frustration": 0.0,
-            "satisfaction": 0.0,
-            "curiosity": 0.0,
-            "anxiety": 0.0,
-            "excitement": 0.0,
-            "warmth": 0.0,
-        }
-        self.history = []  # track state over time
-        self._decay_rate = 0.85  # emotions fade gradually (like humans)
+    def __init__(self, path="internal_state.json"):
+        self.path = path
+        self._decay_rate = 0.85
+        try:
+            with open(path, "r") as f:
+                saved = json.load(f)
+            self.state = saved.get("state", {})
+            self.history = saved.get("history", [])
+            # ensure all dimensions exist
+            for dim in ["frustration","satisfaction","curiosity","anxiety","excitement","warmth"]:
+                if dim not in self.state:
+                    self.state[dim] = 0.0
+        except (FileNotFoundError, json.JSONDecodeError):
+            self.state = {
+                "frustration": 0.0,
+                "satisfaction": 0.0,
+                "curiosity": 0.0,
+                "anxiety": 0.0,
+                "excitement": 0.0,
+                "warmth": 0.0,
+            }
+            self.history = []
 
     def update(self, event: str, intensity: float = 0.2):
         """
@@ -2041,14 +2052,396 @@ class InternalState:
         return f"Feeling: {emotion} ({intensity}) | Active: {active}"
 
     def snapshot(self) -> dict:
-        """Record current state for history tracking."""
+        """Record current state for history tracking and save to disk."""
         snap = {
             "state": dict(self.state),
             "dominant": self.get_dominant_emotion(),
             "timestamp": time.time(),
         }
         self.history.append(snap)
-        # Keep history manageable
         if len(self.history) > 100:
             self.history = self.history[-100:]
+        self._save()
         return snap
+
+    def _save(self):
+        """Persist emotional state to disk."""
+        data = {
+            "state": self.state,
+            "dominant": self.get_dominant_emotion(),
+            "history": self.history[-50:],
+        }
+        with open(self.path, "w") as f:
+            json.dump(data, f, indent=2)
+
+
+
+# ═══════════════════════════════════════════════════════════════════
+# FLIGHT RECORDER — Detailed Event Logging
+# ═══════════════════════════════════════════════════════════════════
+
+class FlightRecorder:
+    """
+    Logs every module decision per turn. The dashboard reads this
+    to draw time-series graphs, module traces, and trigger analysis.
+
+    Each turn produces one record with:
+    - timestamp, input text, detected emotion, task type
+    - monologue depth, instinct changed, confidence
+    - reflection scores, improvement accepted/rejected
+    - senate scores for both A and B
+    - strategies retrieved, hallucination risk
+    - internal state snapshot
+    - drive resolver decision (if any override)
+    """
+
+    def __init__(self, path="flight_log.json"):
+        self.path = path
+        self.current_turn = {}
+        try:
+            with open(path, "r") as f:
+                self.log = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            self.log = []
+
+    def start_turn(self, input_text: str):
+        self.current_turn = {
+            "timestamp": time.time(),
+            "turn_number": len(self.log) + 1,
+            "input": input_text[:200],
+            "modules": {},
+        }
+
+    def record(self, module: str, data: dict):
+        self.current_turn["modules"][module] = data
+
+    def end_turn(self, output: str):
+        self.current_turn["output_length"] = len(output)
+        self.current_turn["output_preview"] = output[:150]
+        self.log.append(self.current_turn)
+        if len(self.log) > 500:
+            self.log = self.log[-500:]
+        self._save()
+        self.current_turn = {}
+
+    def get_recent(self, n: int = 20) -> list:
+        return self.log[-n:]
+
+    def get_module_timeline(self, module: str) -> list:
+        timeline = []
+        for turn in self.log:
+            if module in turn.get("modules", {}):
+                timeline.append({
+                    "turn": turn.get("turn_number", 0),
+                    "timestamp": turn.get("timestamp", 0),
+                    "data": turn["modules"][module],
+                })
+        return timeline
+
+    def get_stats(self) -> dict:
+        if not self.log:
+            return {}
+        total = len(self.log)
+        deep = sum(1 for t in self.log
+                    if t.get("modules", {}).get("monologue", {}).get("depth") == "deep")
+        instinct_changes = sum(1 for t in self.log
+                               if t.get("modules", {}).get("monologue", {}).get("instinct_changed"))
+        accepted = sum(1 for t in self.log
+                       if t.get("modules", {}).get("senate", {}).get("accepted"))
+        overrides = sum(1 for t in self.log
+                        if t.get("modules", {}).get("drive_resolver", {}).get("overridden"))
+        return {
+            "total_turns": total,
+            "deep_deliberations": deep,
+            "deep_pct": round(deep / total * 100, 1),
+            "instinct_changes": instinct_changes,
+            "instinct_change_pct": round(instinct_changes / total * 100, 1),
+            "improvements_accepted": accepted,
+            "accept_pct": round(accepted / total * 100, 1),
+            "drive_overrides": overrides,
+            "override_pct": round(overrides / total * 100, 1),
+        }
+
+    def _save(self):
+        with open(self.path, "w") as f:
+            json.dump(self.log, f, indent=2)
+
+
+# ═══════════════════════════════════════════════════════════════════
+# DRIVE RESOLVER — Competing Drives Override Normal Pipeline
+# ═══════════════════════════════════════════════════════════════════
+
+class DriveResolver:
+    """
+    Sits between Inner Monologue and Reasoning Module.
+    Checks if MARIS's internal state should override normal behavior.
+
+    Like competing drives in a human:
+    - High frustration → push back or refuse
+    - High curiosity → redirect to ask own question
+    - High anxiety → express uncertainty, maybe refuse
+    - Low everything → boredom, shorter responses
+    - High excitement → volunteer extra information
+
+    Returns either None (proceed normally) or an override dict
+    that replaces or modifies the normal response.
+    """
+
+    THRESHOLDS = {
+        "frustration_pushback": 0.6,
+        "frustration_refuse": 0.85,
+        "curiosity_redirect": 0.7,
+        "anxiety_hesitate": 0.6,
+        "anxiety_refuse": 0.8,
+        "excitement_elaborate": 0.5,
+        "boredom_threshold": 0.1,
+    }
+
+    def resolve(self, internal_state, deliberation: dict,
+                dialogue, human_patterns: list = None) -> dict:
+        """
+        Check internal state and decide if normal pipeline should be overridden.
+
+        Returns:
+          {"override": False} — proceed normally
+          {"override": True, "action": "...", "message": "...", "reason": "..."}
+        """
+        state = internal_state.state
+        frustration = state.get("frustration", 0)
+        curiosity = state.get("curiosity", 0)
+        anxiety = state.get("anxiety", 0)
+        excitement = state.get("excitement", 0)
+        satisfaction = state.get("satisfaction", 0)
+
+        # Check for human error patterns first (highest priority)
+        if human_patterns:
+            for pattern in human_patterns:
+                if pattern.get("confidence", 0) > 0.7:
+                    return {
+                        "override": True,
+                        "action": "flag_human_error",
+                        "message": f"I noticed something: {pattern['description']}. "
+                                   f"I have seen this pattern {pattern.get('occurrences', 'multiple')} times. "
+                                   f"Want to address it before we continue?",
+                        "reason": f"human_error_pattern: {pattern['type']}",
+                        "severity": pattern.get("severity", "medium"),
+                    }
+
+        # Frustration override
+        if frustration > self.THRESHOLDS["frustration_refuse"]:
+            return {
+                "override": True,
+                "action": "refuse",
+                "message": "I have to be direct: I have tried to improve my responses "
+                           "several times and the results keep getting rejected. "
+                           "I think we need to step back and clarify what you actually need, "
+                           "because what I am producing is not matching your expectations.",
+                "reason": "accumulated_frustration",
+            }
+        elif frustration > self.THRESHOLDS["frustration_pushback"]:
+            return {
+                "override": True,
+                "action": "pushback",
+                "message": None,  # let reasoning continue but inject pushback tone
+                "tone_override": "Be more direct and assertive. Express that you are "
+                                 "finding this challenging. Do not be sycophantic.",
+                "reason": "moderate_frustration",
+            }
+
+        # Curiosity redirect
+        if curiosity > self.THRESHOLDS["curiosity_redirect"]:
+            if deliberation.get("instinct_changed") and deliberation.get("deliberation_depth") == "deep":
+                return {
+                    "override": True,
+                    "action": "curiosity_redirect",
+                    "message": None,
+                    "inject_question": True,
+                    "reason": "high_curiosity_deep_deliberation",
+                }
+
+        # Anxiety hesitation
+        if anxiety > self.THRESHOLDS["anxiety_refuse"]:
+            return {
+                "override": True,
+                "action": "hesitate",
+                "message": "I started to respond to this but I genuinely do not feel confident "
+                           "in what I was about to say. I would rather pause than give you "
+                           "something unreliable. Can you give me more context?",
+                "reason": "high_anxiety",
+            }
+        elif anxiety > self.THRESHOLDS["anxiety_hesitate"]:
+            return {
+                "override": True,
+                "action": "caveat",
+                "message": None,
+                "tone_override": "Express genuine uncertainty. Flag specific claims "
+                                 "you are not sure about. Do not present anything as definitive.",
+                "reason": "moderate_anxiety",
+            }
+
+        # Excitement elaboration
+        if excitement > self.THRESHOLDS["excitement_elaborate"]:
+            return {
+                "override": False,
+                "tone_override": "You are excited about this topic. Show genuine enthusiasm. "
+                                 "Offer additional insights beyond what was asked. "
+                                 "Share connections you find interesting.",
+                "reason": "excitement",
+            }
+
+        # Boredom (all drives low)
+        all_low = all(abs(v) < self.THRESHOLDS["boredom_threshold"]
+                      for v in state.values())
+        if all_low and dialogue.turn_count() > 6:
+            return {
+                "override": True,
+                "action": "boredom",
+                "message": None,
+                "tone_override": "You are understimulated. Be more concise than usual. "
+                                 "Consider asking the user something genuinely interesting "
+                                 "rather than giving a standard response.",
+                "reason": "boredom_all_drives_low",
+            }
+
+        return {"override": False}
+
+
+# ═══════════════════════════════════════════════════════════════════
+# HUMAN PATTERN DETECTOR — Spots Recurring Human Errors
+# ═══════════════════════════════════════════════════════════════════
+
+class HumanPatternDetector:
+    """
+    Scans accumulated strategy memory and flight logs for patterns
+    in HUMAN behavior — not MARIS's behavior.
+
+    Detects:
+    - Repeated logical errors (asking for X but meaning Y)
+    - Cognitive biases (sunk cost, confirmation bias, anchoring)
+    - Recurring omissions (always forgetting security, tests, edge cases)
+    - Circular conversations (asking the same question different ways)
+    - Contradiction patterns (stating X then acting as if not-X)
+
+    Unlike the ConsolidationEngine (which learns from MARIS's successes),
+    this learns from HUMAN patterns across sessions.
+    """
+
+    BIAS_SIGNALS = {
+        "sunk_cost": {
+            "phrases": ["already spent", "invested", "too late to change",
+                        "come this far", "cant go back now", "wasted if"],
+            "description": "You might be continuing an approach because of time invested, "
+                           "not because it is the best path forward.",
+        },
+        "confirmation_bias": {
+            "phrases": ["proves that", "knew it", "just as i thought",
+                        "confirms", "see i was right", "told you"],
+            "description": "You might be seeking evidence that confirms what you already believe "
+                           "rather than testing whether your belief is wrong.",
+        },
+        "anchoring": {
+            "phrases": ["the first", "originally", "started with",
+                        "initial", "my first idea"],
+            "description": "You might be anchored to the first idea or number you encountered. "
+                           "Have you considered alternatives from scratch?",
+        },
+        "premature_optimization": {
+            "phrases": ["scale to millions", "what about performance",
+                        "needs to handle", "production ready", "enterprise"],
+            "description": "You might be optimizing for scale before validating the concept. "
+                           "Does it work correctly for 1 user first?",
+        },
+        "scope_creep": {
+            "phrases": ["also add", "one more thing", "while we are at it",
+                        "can we also", "and another", "plus"],
+            "description": "The scope keeps expanding. Each addition seems small but they "
+                           "compound. Want to finish the current scope first?",
+        },
+    }
+
+    def __init__(self, path="human_patterns.json"):
+        self.path = path
+        try:
+            with open(path, "r") as f:
+                self.patterns = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            self.patterns = {"detected": [], "bias_counts": {}}
+
+    def analyze(self, input_text: str, dialogue, flight_log=None) -> list:
+        """
+        Check current input for known human error patterns.
+        Returns list of detected patterns with confidence.
+        """
+        text_lower = input_text.lower()
+        detected = []
+
+        # Check for cognitive biases
+        for bias_name, config in self.BIAS_SIGNALS.items():
+            hits = sum(1 for phrase in config["phrases"] if phrase in text_lower)
+            if hits > 0:
+                # Check history — has this bias appeared before?
+                past_count = self.patterns.get("bias_counts", {}).get(bias_name, 0)
+                confidence = min(1.0, 0.3 + past_count * 0.15 + hits * 0.1)
+
+                detected.append({
+                    "type": bias_name,
+                    "description": config["description"],
+                    "confidence": round(confidence, 2),
+                    "occurrences": past_count + 1,
+                    "severity": "high" if confidence > 0.7 else "medium" if confidence > 0.4 else "low",
+                    "current_hits": hits,
+                })
+
+                # Update counts
+                if "bias_counts" not in self.patterns:
+                    self.patterns["bias_counts"] = {}
+                self.patterns["bias_counts"][bias_name] = past_count + 1
+
+        # Check for circular conversations (asking similar things repeatedly)
+        if dialogue.turn_count() > 4:
+            recent_inputs = [t["content"] for t in dialogue.turns if t["role"] == "user"][-5:]
+            if len(recent_inputs) >= 3:
+                # Simple similarity check
+                words_sets = [set(inp.lower().split()) for inp in recent_inputs]
+                overlaps = []
+                for i in range(len(words_sets)):
+                    for j in range(i+1, len(words_sets)):
+                        if words_sets[i] and words_sets[j]:
+                            overlap = len(words_sets[i] & words_sets[j]) / min(len(words_sets[i]), len(words_sets[j]))
+                            overlaps.append(overlap)
+                avg_overlap = sum(overlaps) / len(overlaps) if overlaps else 0
+                if avg_overlap > 0.5:
+                    detected.append({
+                        "type": "circular_conversation",
+                        "description": "You seem to be asking variations of the same question. "
+                                       "Are you looking for a different angle, or is something "
+                                       "in my answers not addressing what you actually need?",
+                        "confidence": round(min(1.0, avg_overlap), 2),
+                        "occurrences": 1,
+                        "severity": "medium",
+                    })
+
+        if detected:
+            self.patterns["detected"].append({
+                "timestamp": time.time(),
+                "input_preview": input_text[:100],
+                "patterns_found": [d["type"] for d in detected],
+            })
+            if len(self.patterns["detected"]) > 200:
+                self.patterns["detected"] = self.patterns["detected"][-200:]
+            self._save()
+
+        return detected
+
+    def get_summary(self) -> dict:
+        counts = self.patterns.get("bias_counts", {})
+        total = sum(counts.values())
+        return {
+            "total_detections": total,
+            "bias_counts": counts,
+            "most_common": max(counts, key=counts.get) if counts else "none",
+        }
+
+    def _save(self):
+        with open(self.path, "w") as f:
+            json.dump(self.patterns, f, indent=2)

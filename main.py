@@ -12,6 +12,7 @@ from llm_modules import (
     DialogueMemory, ConsolidationEngine,
     Senate, DevelopmentTracker, HallucinationProbe, InnerMonologue,
     InsightDetector, ProactiveModule, AutonomousAction, InternalState,
+    FlightRecorder, DriveResolver, HumanPatternDetector,
 )
 
 
@@ -44,6 +45,9 @@ class AI_System:
         self.proactive = ProactiveModule()
         self.autonomous = AutonomousAction()
         self.inner_state = InternalState()
+        self.flight_recorder = FlightRecorder()
+        self.drive_resolver = DriveResolver()
+        self.human_pattern_detector = HumanPatternDetector()
 
     def run(self, input_text: str, max_steps: int = 3, interactive: bool = True):
         print(f"\n{'='*60}")
@@ -51,6 +55,7 @@ class AI_System:
         print(f"{'='*60}")
 
         self.dialogue.add_user(input_text)
+        self.flight_recorder.start_turn(input_text)
 
         # ── Step 1: Emotion ──
         emotion = self.emotion_module.analyze(input_text)
@@ -71,6 +76,21 @@ class AI_System:
             print(f"  {maris_color}MARIS feels: {maris_emotion} (intensity={maris_intensity}){maris_reset}")
         else:
             print(f"  MARIS feels: neutral")
+
+        # Record to flight log
+        self.flight_recorder.record("emotion", {"user_mood": emotion["mood"], "maris_mood": maris_emotion, "maris_intensity": maris_intensity})
+        self.flight_recorder.record("task", {"type": task_type.get("task_type", "?"), "tokens": task_type.get("base_tokens", 0)})
+        self.flight_recorder.record("stage", {"stage": stage.get("stage", 0), "name": stage.get("name", "?")})
+
+        # ── Human pattern detection ──
+        human_patterns = self.human_pattern_detector.analyze(input_text, self.dialogue)
+        if human_patterns:
+            high_conf = [p for p in human_patterns if p["severity"] in ("high", "medium")]
+            for p in high_conf:
+                color_warn = "\033[93m"
+                reset_warn = "\033[0m"
+                print(f"  {color_warn}Pattern detected: {p['type']} (conf={p['confidence']}, seen {p['occurrences']}x){reset_warn}")
+                print(f"  {color_warn}  {p['description'][:100]}{reset_warn}")
         print(f"  Progress to next: {stage['progress_to_next']}")
 
         # ── Step 2: Task type detection (NEW) ──
@@ -168,6 +188,39 @@ class AI_System:
             if action.get("_reset_code"):
                 needs_color_reset = True
 
+        # Record monologue to flight log
+        self.flight_recorder.record("monologue", {
+            "depth": deliberation.get("deliberation_depth", "?"),
+            "confidence": deliberation.get("confidence", 0),
+            "instinct_changed": deliberation.get("instinct_changed", False),
+        })
+
+        # ── Drive Resolver: can internal state override normal response? ──
+        drive_decision = self.drive_resolver.resolve(
+            self.inner_state, deliberation, self.dialogue,
+            human_patterns if 'human_patterns' in dir() else None
+        )
+        self.flight_recorder.record("drive_resolver", {
+            "overridden": drive_decision.get("override", False),
+            "action": drive_decision.get("action", "none"),
+            "reason": drive_decision.get("reason", ""),
+        })
+
+        if drive_decision.get("override") and drive_decision.get("message"):
+            # Drive override — MARIS refuses, pushes back, or redirects
+            override_color = "\033[93m"
+            reset_c = "\033[0m"
+            print(f"\n  {override_color}[Drive Override: {drive_decision.get('action', '?')}]{reset_c}")
+            current = drive_decision["message"]
+            self.dialogue.add_assistant(current)
+            self.flight_recorder.end_turn(current)
+            self._print_final(current)
+            return current
+
+        if drive_decision.get("tone_override"):
+            # Soft override — inject tone but continue pipeline
+            monologue_context += "\n\nTONE OVERRIDE: " + drive_decision["tone_override"]
+
         # ── Step 7: Reasoning (guided by inner monologue) ──
         context = {
             "emotion": emotion,
@@ -248,6 +301,7 @@ class AI_System:
                 self.dialogue.add_assistant(current)
                 print(f"  Accepted")
                 self.inner_state.update("improvement_accepted")
+                self.flight_recorder.record("senate", {"accepted": True, "winner": verdict["winner"], "confidence": verdict["confidence"]})
 
                 self.memory.add({
                     "input": input_text,
@@ -260,6 +314,7 @@ class AI_System:
             else:
                 print(f"  Kept original")
                 self.inner_state.update("improvement_rejected")
+                self.flight_recorder.record("senate", {"accepted": False, "winner": verdict["winner"], "confidence": verdict["confidence"]})
 
         # ── Auto-consolidation check ──
         if self.consolidation.should_consolidate(self.memory):
@@ -330,7 +385,7 @@ class AI_System:
         print("\n" + "="*60)
         print("  MARIS v6 — Modular Adaptive Reasoning")
         print("  with Interactive Self-improvement")
-        print("  + Senate | Inner Monologue | Eureka | Autonomous")
+        print("  + Senate | Monologue | Eureka | DriveResolver | PatternDetector")
         print("="*60)
         print(f"\n  Memory: {self.memory.strategy_count()} strategies, "
               f"{self.memory.meta_count()} meta-rules, "
@@ -348,6 +403,8 @@ class AI_System:
         print("  /stage        — development level")
         print("  /progress     — learning metrics")
         print("  /feelings     — MARIS's emotional state")
+        print("  /log          — flight recorder (module traces)")
+        print("  /patterns     — detected human error patterns")
         print("  /stats        — system statistics")
         print("  /clear        — reset conversation")
         print("  quit          — exit")
@@ -390,6 +447,12 @@ class AI_System:
                 continue
             if user_input == "/feelings":
                 self._show_feelings()
+                continue
+            if user_input == "/log":
+                self._show_log()
+                continue
+            if user_input == "/patterns":
+                self._show_patterns()
                 continue
             if user_input == "/progress":
                 self._show_progress()
