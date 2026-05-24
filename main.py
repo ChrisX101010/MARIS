@@ -79,8 +79,7 @@ class AI_System:
 
         # Record to flight log
         self.flight_recorder.record("emotion", {"user_mood": emotion["mood"], "maris_mood": maris_emotion, "maris_intensity": maris_intensity})
-        self.flight_recorder.record("task", {"type": task_type.get("task_type", "?"), "tokens": task_type.get("base_tokens", 0)})
-        self.flight_recorder.record("stage", {"stage": stage.get("stage", 0), "name": stage.get("name", "?")})
+        # flight recorder task + stage recorded after task detection (below)
 
         # ── Human pattern detection ──
         human_patterns = self.human_pattern_detector.analyze(input_text, self.dialogue)
@@ -99,6 +98,8 @@ class AI_System:
               f"(tokens={task_type['base_tokens']}, scores={task_type['all_scores']})")
 
         # ── Step 3: Complexity routing (FIXED) ──
+        self.flight_recorder.record("task", {"type": task_type.get("task_type", "?"), "tokens": task_type.get("base_tokens", 0)})
+        self.flight_recorder.record("stage", {"stage": stage.get("stage", 0), "name": stage.get("name", "?")})
         complexity = self.router.classify(input_text, task_type, self.dialogue)
         steps = min(complexity["recommended_steps"], max_steps)
         print(f"  Complexity: {complexity['complexity']} "

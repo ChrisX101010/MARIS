@@ -1,0 +1,82 @@
+[Unit]
+Description=MARIS v8 Autonomous Learning Daemon
+Documentation=https://github.com/ChrisX101010/MARIS
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+# ── EDIT THESE FOR YOUR SYSTEM ──────────────────────────────────────────
+User=YOUR_USERNAME
+Group=YOUR_USERNAME
+WorkingDirectory=/home/YOUR_USERNAME/MARIS
+
+# Path to your virtualenv's python, or just "python3"
+ExecStart=/home/YOUR_USERNAME/MARIS/.venv/bin/python maris_daemon.py
+# ─────────────────────────────────────────────────────────────────────────
+
+# Environment
+Environment="MARIS_DATA_DIR=/home/YOUR_USERNAME/MARIS"
+Environment="MARIS_AUTONOMOUS_LOG=/home/YOUR_USERNAME/MARIS/autonomous_log.json"
+# API key — better to put this in a secrets file (see below)
+# Environment="ANTHROPIC_API_KEY=sk-ant-..."
+EnvironmentFile=/etc/maris/secrets.env
+
+# Restart on failure, with backoff
+Restart=on-failure
+RestartSec=30s
+StartLimitIntervalSec=600
+StartLimitBurst=5
+
+# Resource limits — daemon should be lightweight
+MemoryMax=512M
+CPUQuota=25%
+TasksMax=64
+
+# Hardening (defense-in-depth; the sandbox already isolates user code)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/YOUR_USERNAME/MARIS
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+RestrictNamespaces=true
+
+# Network: daemon needs outbound for Anthropic API + DuckDuckGo
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=maris-daemon
+
+[Install]
+WantedBy=multi-user.target
+
+# ─────────────────────────────────────────────────────────────────────────
+# Installation:
+#
+#   1. Edit YOUR_USERNAME above (3 places).
+#
+#   2. Create the secrets file:
+#        sudo mkdir -p /etc/maris
+#        sudo bash -c 'echo "ANTHROPIC_API_KEY=sk-ant-..." > /etc/maris/secrets.env'
+#        sudo chmod 600 /etc/maris/secrets.env
+#
+#   3. Copy this file:
+#        sudo cp maris.service /etc/systemd/system/maris.service
+#
+#   4. Enable and start:
+#        sudo systemctl daemon-reload
+#        sudo systemctl enable --now maris.service
+#
+#   5. Watch it:
+#        sudo journalctl -u maris -f
+#        python maris_daemon.py --status
+# ─────────────────────────────────────────────────────────────────────────

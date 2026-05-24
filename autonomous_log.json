@@ -1,0 +1,41 @@
+[
+  {
+    "event": "perception_search_empty",
+    "query": "core programming principles practical implementation coding best practices guide",
+    "ts": "2026-05-24T18:04:20.971064"
+  },
+  {
+    "event": "consequence_tested",
+    "strategy": "Ground philosophical uncertainty in concrete technical distinctions rather than sitting in the uncomfortable middle\u2014be p",
+    "outcome": "crash",
+    "hypothesis": "Precise technical pattern recognition (mathematical rules) outperforms vague heuristic approaches in predicting sequence",
+    "stderr_preview": "Traceback (most recent call last):\n  File \"/tmp/maris_consequence_zz0agri5.py\", line 22, in <module>\n  File \"/tmp/maris_consequence_zz0agri5.py\", line 11, in _guarded_import\n  File \"/tmp/maris_consequ",
+    "ts": "2026-05-24T18:04:32.255119"
+  },
+  {
+    "event": "perception_search_empty",
+    "query": "code review best practices checklist software development tactics",
+    "ts": "2026-05-24T18:06:44.256051"
+  },
+  {
+    "event": "consequence_tested",
+    "strategy": "Validate emotional reality while immediately introducing one actionable step and gently challenging catastrophic thinkin",
+    "outcome": "crash",
+    "hypothesis": "A conversational strategy can be measured by checking if responses contain emotional validation, actionable steps, and c",
+    "stderr_preview": "Traceback (most recent call last):\n  File \"/tmp/maris_consequence_p3vk6wk0.py\", line 22, in <module>\n  File \"/tmp/maris_consequence_p3vk6wk0.py\", line 11, in _guarded_import\n  File \"/tmp/maris_consequ",
+    "ts": "2026-05-24T18:06:55.355276"
+  },
+  {
+    "event": "perception_search_empty",
+    "query": "core principles effective explanations step by step tactical guide",
+    "ts": "2026-05-24T18:08:57.679327"
+  },
+  {
+    "event": "consequence_tested",
+    "strategy": "Strengthen epistemic humility by frontloading uncertainty about consciousness rather than building frameworks from unver",
+    "outcome": "crash",
+    "hypothesis": "Responses that frontload uncertainty and explore multiple moral frameworks will produce higher quality outcomes than ove",
+    "stderr_preview": "Traceback (most recent call last):\n  File \"/tmp/maris_consequence_eq63uu0e.py\", line 22, in <module>\n  File \"/tmp/maris_consequence_eq63uu0e.py\", line 11, in _guarded_import\n  File \"/tmp/maris_consequ",
+    "ts": "2026-05-24T18:09:07.134346"
+  }
+]
