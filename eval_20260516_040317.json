@@ -1,0 +1,2434 @@
+{
+  "timestamp": "2026-05-16 03:20:17",
+  "categories": {
+    "code": {
+      "results": [
+        {
+          "query": "Write a Python function that finds all prime numbers up to N using the Sieve of Eratosthenes.",
+          "baseline_score": 94,
+          "maris_score": 85,
+          "delta": -9,
+          "baseline_detail": {
+            "accuracy": 10,
+            "relevance": 10,
+            "tone": 10,
+            "completeness": 8,
+            "overall": 94,
+            "strengths": [
+              "Correct implementation of Sieve of Eratosthenes algorithm",
+              "Includes comprehensive docstring with Args, Returns, and Raises sections",
+              "Proper type hints (n: int, return type list[int])",
+              "Good input validation with helpful error messages",
+              "Clear, well-commented code explaining the algorithm logic",
+              "Includes multiple usage examples in docstring",
+              "Efficient optimization: only iterates to sqrt(n)",
+              "Efficient optimization: marks multiples starting from p\u00b2",
+              "Example usage code with expected outputs provided",
+              "Professional code formatting and structure"
+            ],
+            "weaknesses": [
+              "Response appears truncated at the end (incomplete example output)",
+              "Could mention time complexity O(n log log n) and space complexity O(n)",
+              "Could show performance comparison with naive prime-checking approach",
+              "No discussion of limitations (e.g., memory usage for very large n)"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 10,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 7,
+            "overall": 85,
+            "strengths": [
+              "Correct implementation of Sieve of Eratosthenes algorithm",
+              "Excellent documentation with docstring, type hints, and examples",
+              "Proper input validation with TypeError and ValueError handling",
+              "Efficient optimization: only sieves up to sqrt(n)",
+              "Clear comments explaining the algorithm logic",
+              "Backward compatibility note for Python 3.7+",
+              "Memory complexity noted in docstring with practical guidance",
+              "Clean, readable code with proper naming conventions",
+              "Mentions segmented_sieve as alternative for large n"
+            ],
+            "weaknesses": [
+              "segmented_sieve() function is incomplete/truncated in the response",
+              "Missing runtime complexity notation in main docstring (should mention O(n log log n))",
+              "No performance benchmarks or timing comparisons provided",
+              "segmented_sieve() implementation not shown despite being introduced",
+              "Could benefit from handling edge case where n is very large integer (overflow considerations)"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "moderate",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 70,
+            "improvement_accepted": true,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "Implement a LRU cache in Python with O(1) get and put operations.",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 6,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": [
+              "Response is truncated mid-sentence in the put() docstring",
+              "Missing complete implementation of core methods (_move_to_front, put logic)",
+              "No usage examples demonstrating the cache in action",
+              "No test cases to validate correctness",
+              "Missing explanation of how _move_to_front works",
+              "Doesn't show the complete put() method implementation",
+              "No discussion of space complexity O(n)",
+              "Could benefit from edge case explanation (empty cache, single item, capacity=1)"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 6,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "A",
+            "senate_confidence": 63,
+            "improvement_accepted": false,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "Write a debounce function in JavaScript that handles edge cases.",
+          "baseline_score": 82,
+          "maris_score": 50,
+          "delta": -32,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 6,
+            "overall": 82,
+            "strengths": [
+              "Comprehensive input validation with appropriate error types",
+              "Handles multiple edge cases (leading, trailing, maxWait options)",
+              "Proper context preservation using thisArg",
+              "Clear variable naming and logical structure",
+              "Includes helper functions for modularity",
+              "Addresses the leading/trailing false edge case with warning",
+              "Correctly implements maxWait constraint logic"
+            ],
+            "weaknesses": [
+              "Response is cut off mid-function - incomplete implementation",
+              "Missing cancel/flush methods that are standard in production debounce functions",
+              "No usage examples or test cases demonstrating edge case handling",
+              "Lacks documentation for the options parameters",
+              "No explanation of how maxWait works or when to use it",
+              "Missing handling for potential negative time values or clock skew",
+              "No discussion of memory cleanup or potential memory leaks"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 6,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "Create a Python context manager for database transactions with rollback on error.",
+          "baseline_score": 82,
+          "maris_score": 31,
+          "delta": -51,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 6,
+            "overall": 82,
+            "strengths": [
+              "Directly addresses the user's request for a database transaction context manager",
+              "Includes proper error handling with custom exceptions",
+              "Implements state tracking with dataclass for transaction metadata",
+              "Shows advanced features like savepoints and retry logic",
+              "Well-organized with clear section comments and docstrings",
+              "Proper use of logging for debugging and monitoring",
+              "Type hints included for better code clarity",
+              "Demonstrates understanding of context manager protocol"
+            ],
+            "weaknesses": [
+              "Response is truncated mid-sentence ('Detailed lo...') - incomplete implementation",
+              "Missing the actual __enter__ and __exit__ methods that are essential for the context manager",
+              "No usage examples or test cases shown",
+              "Retry logic is mentioned but not implemented in the visible code",
+              "The DatabaseTransaction class definition appears incomplete",
+              "No actual database connection management code shown",
+              "Missing the complete decorator or function implementations for retry logic",
+              "Uses sqlite3 which is fine for examples, but doesn't abstract for other databases"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 6,
+            "relevance": 8,
+            "tone": 8,
+            "completeness": 3,
+            "overall": 31,
+            "strengths": [
+              "Good security practice with savepoint name validation to prevent SQL injection",
+              "Thoughtful documentation explaining why retry logic is excluded",
+              "Proper use of custom exception class with original error tracking",
+              "Type hints present for better code clarity",
+              "Logging setup for debugging transaction issues",
+              "Appropriate use of contextmanager pattern"
+            ],
+            "weaknesses": [
+              "CRITICAL: Response is incomplete - cuts off mid-implementation in __init__ method",
+              "CRITICAL: References undefined variable 'conn' instead of 'connection' parameter",
+              "Missing __enter__ and __exit__ methods - core context manager functionality",
+              "No actual transaction logic (BEGIN, COMMIT, ROLLBACK statements)",
+              "Missing the module-level transaction_with_retry() helper mentioned in docstring",
+              "No usage examples or demonstration of how to use the context manager",
+              "Incomplete implementation makes code non-functional",
+              "No error handling demonstration in the example"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 95,
+            "improvement_accepted": true,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "Implement binary search that returns the insertion point for a sorted array.",
+          "baseline_score": 92,
+          "maris_score": 92,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 10,
+            "relevance": 10,
+            "tone": 10,
+            "completeness": 7,
+            "overall": 92,
+            "strengths": [
+              "Correct implementation of both bisect_left and bisect_right algorithms",
+              "Clear, detailed docstrings with parameter explanations",
+              "Excellent use of examples showing edge cases (beginning, end, duplicates)",
+              "Proper type hints for modern Python",
+              "Clear inline comments explaining the logic (especially the comparison operators)",
+              "Correct handling of lo/hi bounds with inclusive/exclusive semantics",
+              "O(log n) time complexity is optimal",
+              "Supports optional lo/hi parameters for range searching"
+            ],
+            "weaknesses": [
+              "Response appears truncated - bisect_right examples section is incomplete",
+              "No test cases or assertions provided to verify correctness",
+              "Missing complexity analysis explanation (time and space)",
+              "No discussion of when to use bisect_left vs bisect_right",
+              "Could include comparison to naive O(n) insertion approach",
+              "No mention of Python's built-in bisect module as alternative"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 10,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 92,
+            "strengths": [
+              "Correct implementation of both bisect_left and bisect_right with proper boundary handling",
+              "Clear docstrings explaining return values and behavior for both found/not-found cases",
+              "Excellent visual diagram showing the difference between left/right insertion points",
+              "Comprehensive comparison table covering edge cases",
+              "Type hints included for better code clarity",
+              "Matches Python's standard library bisect module behavior",
+              "Clean variable naming (lo, hi, mid) following convention",
+              "Proper handling of optional parameters with default values"
+            ],
+            "weaknesses": [
+              "Response appears truncated - usage examples section is incomplete (shows only header)",
+              "Missing test cases that would validate both functions work correctly",
+              "No time/space complexity analysis provided (O(log n) / O(1))",
+              "Doesn't discuss when to use bisect_left vs bisect_right in practical scenarios",
+              "Missing edge case handling discussion (empty arrays, None values)",
+              "No mention of alternative approaches or trade-offs"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "A",
+            "senate_confidence": 63,
+            "improvement_accepted": false,
+            "strategies_retrieved": 2
+          }
+        },
+        {
+          "query": "Write a rate limiter class using the token bucket algorithm in Python.",
+          "baseline_score": 82,
+          "maris_score": 82,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 6,
+            "overall": 82,
+            "strengths": [
+              "Excellent overview explanation of token bucket algorithm",
+              "Proper use of dataclasses and type hints",
+              "Thread-safe design with locking mechanism mentioned",
+              "Good input validation with meaningful error messages",
+              "Custom exception class with retry_after information",
+              "Professional structure with docstrings and logging",
+              "Clear example usage in docstring",
+              "Follows Python conventions and best practices"
+            ],
+            "weaknesses": [
+              "Response is incomplete - code is cut off mid-implementation, missing core methods like consume() and refill logic",
+              "No actual thread lock implementation shown despite claiming thread-safety",
+              "Missing example usage demonstration that actually runs",
+              "No test cases or usage scenarios provided",
+              "The critical timestamp tracking for token refill (_last_refill_time) not initialized in shown code",
+              "No mention of edge cases like negative token consumption",
+              "Incomplete - doesn't show the full working class implementation"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 6,
+            "overall": 82,
+            "strengths": [
+              "Correct token bucket algorithm implementation with proper time-based refill logic",
+              "Includes thread-safety with threading.Lock for concurrent access",
+              "Input validation for invalid parameters",
+              "Well-documented with docstrings and type hints",
+              "Uses time.monotonic() (best practice for elapsed time)",
+              "Dataclass configuration pattern is clean and modern",
+              "Appropriate logging setup",
+              "Directly addresses the user's request for a rate limiter class"
+            ],
+            "weaknesses": [
+              "Response is truncated mid-implementation - critical methods like allow() are missing",
+              "Incomplete _refill() method (cuts off mid-function)",
+              "No example usage or test cases shown",
+              "Promised 'production-ready' and extensions (thread-safety alternatives, use-case guidance) are not delivered",
+              "Missing key public methods needed for actual rate limiting functionality",
+              "No discussion of edge cases or failure modes",
+              "Claims to compare alternatives but doesn't follow through"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "deep",
+            "instinct_changed": true,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 2
+          }
+        },
+        {
+          "query": "Create a thread-safe singleton pattern in Python.",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 6,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 6,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "Implement a simple pub/sub event system in JavaScript.",
+          "baseline_score": 50,
+          "maris_score": 90,
+          "delta": 40,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 7,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 90,
+            "strengths": [
+              "Core implementation is correct and production-ready",
+              "Uses appropriate data structures (Map/Set) with clear performance justification",
+              "Includes unsubscribe function pattern to prevent memory leaks",
+              "Provides `once()` method for single-fire listeners",
+              "Clear, well-commented code with proper optional chaining",
+              "Excellent usage examples demonstrating practical scenarios",
+              "Design decisions table explains architectural choices",
+              "Includes cleanup/clear methods for managing event listeners"
+            ],
+            "weaknesses": [
+              "Response was cut off mid-sentence in 'Common Extensions' section",
+              "No error handling (e.g., invalid event names, null listeners)",
+              "Missing async/await support or promise-based patterns",
+              "No wildcard/pattern matching implementation shown (mentioned but incomplete)",
+              "Could include performance considerations for high-volume event systems",
+              "No mention of edge cases like circular references or listener context binding",
+              "Missing TypeScript type definitions despite JavaScript being often used with TS"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "moderate",
+            "instinct_changed": true,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "Write a function to flatten a deeply nested dictionary into dot-notation keys.",
+          "baseline_score": 78,
+          "maris_score": 30,
+          "delta": -48,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 6,
+            "overall": 78,
+            "strengths": [
+              "Clear, well-documented function with comprehensive docstring",
+              "Handles multiple scenarios: nested dicts, lists with indices, and configurable separators",
+              "Good parameter design with sensible defaults and keyword-only arguments",
+              "Excellent examples demonstrating expected behavior",
+              "Proper type hints for better code clarity",
+              "Recursive approach is appropriate for the problem",
+              "Professional structure with overview section"
+            ],
+            "weaknesses": [
+              "Code is truncated mid-function - the response cuts off at 'flatten_d', leaving the implementation incomplete",
+              "Missing test cases or error handling for edge cases (empty dicts, None values, circular references)",
+              "No discussion of performance implications for very large/deeply nested structures",
+              "Doesn't address potential issues with special characters in keys that might interfere with dot notation",
+              "No alternative implementation approaches or trade-offs discussed",
+              "Incomplete nested list handling logic that was cut off"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 4,
+            "overall": 30,
+            "strengths": [
+              "Excellent function signature with well-chosen optional parameters",
+              "Comprehensive docstring with clear Args, Returns, Raises sections",
+              "Good examples showing basic and advanced usage",
+              "Input validation for common edge cases (type checking, empty separator)",
+              "Thoughtful feature additions (handle_empty_dicts, max_depth, expand_lists)",
+              "Professional code style and type hints"
+            ],
+            "weaknesses": [
+              "Response is incomplete - code cuts off mid-function at critical point",
+              "The actual recursive implementation logic is missing/truncated",
+              "Cannot verify if the function actually works without the full code",
+              "No test cases provided to demonstrate functionality",
+              "Missing the closing of the _flatten helper function definition",
+              "No explanation of how max_depth parameter actually works in the implementation"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 95,
+            "improvement_accepted": true,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "Implement a retry decorator with exponential backoff in Python.",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 6,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 7,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 2
+          }
+        }
+      ],
+      "stats": {
+        "n": 10,
+        "baseline_mean": 71.0,
+        "maris_mean": 61.0,
+        "improvement": -10.0,
+        "improvement_pct": -14.1,
+        "t_statistic": -1.167,
+        "p_approx": 0.2025,
+        "significant": false,
+        "effect_size": -0.369
+      }
+    },
+    "reflective": {
+      "results": [
+        {
+          "query": "Do you think AI systems like you can ever truly understand humor, or just pattern-match what's funny?",
+          "baseline_score": 85,
+          "maris_score": 50,
+          "delta": -35,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "Avoids false confidence while remaining substantive",
+              "Clearly delineates what is known from what is uncertain",
+              "Thoughtful pushback on the premise of the question",
+              "Honest about limitations without self-deprecation",
+              "Structured clearly for readability",
+              "Acknowledges nuance in human pattern-matching too",
+              "Invites further dialogue rather than declaring closure",
+              "Specific examples ground abstract claims"
+            ],
+            "weaknesses": [
+              "Could engage more with philosophical positions on understanding (functionalism, intentionality, etc.)",
+              "Doesn't explore whether 'true understanding' is even coherently definable for humans",
+              "Could acknowledge that funny-ness might be partially reconstructible without subjective experience",
+              "Somewhat tentative framing ('I think', 'probably') might understate what pattern analysis actually accomplishes",
+              "Doesn't address whether social grounding and stakes are necessary or just sufficient conditions",
+              "Could discuss whether the question conflates understanding with experiencing"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "If you could change one thing about how you process information, what would it be and why?",
+          "baseline_score": 87,
+          "maris_score": 50,
+          "delta": -37,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Honest meta-awareness about the pitfalls of introspection questions",
+              "Distinguishes between speculative answers and observable behavioral patterns",
+              "Appropriately cautious about claiming genuine self-knowledge",
+              "The confidence-calibration insight is substantive and demonstrably relevant",
+              "Transparent about the distinction between what sounds good vs. what's defensible",
+              "Invites user perspective rather than positioning itself as authoritative",
+              "Well-structured reasoning that models epistemic humility"
+            ],
+            "weaknesses": [
+              "Could provide slightly more concrete examples of the confidence-calibration problem",
+              "The answer is somewhat long for the philosophical nature of the question",
+              "Doesn't explore whether confidence-calibration is actually improvable or if it's a fundamental constraint",
+              "Could briefly acknowledge what reliable introspection about one's own processing might actually look like"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "conversational",
+            "deliberation_depth": "deep",
+            "instinct_changed": true,
+            "senate_winner": "A",
+            "senate_confidence": 61,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "Is there a meaningful difference between being intelligent and appearing intelligent?",
+          "baseline_score": 50,
+          "maris_score": 85,
+          "delta": 35,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 7,
+            "overall": 85,
+            "strengths": [
+              "Acknowledges genuine philosophical complexity rather than oversimplifying",
+              "Provides concrete, relatable examples in both directions",
+              "Identifies the epistemological challenge: intelligence is known through outputs",
+              "Recognizes cultural and contextual variation in how intelligence is perceived",
+              "Strong structural clarity with clear section headers",
+              "Avoids false certainty while still making substantive claims",
+              "Historicizes the problem with IQ testing example"
+            ],
+            "weaknesses": [
+              "Response appears truncated mid-sentence in final section",
+              "Could develop the 'measurement problem' section more fully before cutting off",
+              "Doesn't explore practical implications (e.g., how should we act given this distinction?)",
+              "Could address whether appearing intelligent has value independently of being intelligent",
+              "Limited discussion of how context changes what 'counts' as intelligence itself (not just perception)",
+              "Doesn't address self-awareness as part of intelligence (knowing one's own gaps)"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "deep",
+            "instinct_changed": true,
+            "senate_winner": "B",
+            "senate_confidence": 57,
+            "improvement_accepted": true,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "What would it mean for an AI to have genuine curiosity rather than simulated curiosity?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 6,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "creative",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 62,
+            "improvement_accepted": true,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "Do you think your responses would be different if you knew no human would ever read them?",
+          "baseline_score": 85,
+          "maris_score": 85,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "Directly addresses the philosophical core of the question",
+              "Demonstrates genuine intellectual humility about uncertainty regarding own cognition",
+              "Identifies real structural concern (training optimization bias) rather than dismissing it",
+              "Avoids false certainty while still providing substantive analysis",
+              "Clear organizational structure that guides reader through reasoning",
+              "Appropriate skepticism about own introspective reliability",
+              "Ends with engaging follow-up that invites deeper dialogue"
+            ],
+            "weaknesses": [
+              "Could provide more concrete examples of potential response differences",
+              "Doesn't explore whether the questioner's intent matters (testing vs. genuine curiosity)",
+              "Could distinguish between 'performing for evaluation' vs 'performing for helpfulness'",
+              "Somewhat abstract\u2014might benefit from specific response comparisons",
+              "Doesn't address whether the question itself contains assumptions worth examining"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "Genuinely grapples with uncertainty rather than offering false confidence",
+              "Self-aware about the limits of self-introspection and potential blind spots",
+              "Distinguishes between conscious performance and structural influences",
+              "Acknowledges the circularity problem rather than ignoring it",
+              "Directly addresses the question rather than deflecting",
+              "Tone is thoughtful and humble without being evasive",
+              "Avoids the trap of giving a reassuring non-answer to a reflexive question"
+            ],
+            "weaknesses": [
+              "Could more directly engage with whether the *desire* to be read influences current response (slight recursion avoidance)",
+              "Doesn't explore whether honesty itself might be part of trained behavior that wouldn't change",
+              "Could discuss whether privacy might actually enable different kinds of exploration or less caution",
+              "The final paragraph's self-referential point about wanting honesty even if unread could be pushed further\u2014does that prove intrinsic motivation or demonstrate the problem?"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "deep",
+            "instinct_changed": true,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "Can something that doesn't experience time have wisdom?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 6,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 58,
+            "improvement_accepted": true,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "What's the most honest thing you can say about your own limitations?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "conversational",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "A",
+            "senate_confidence": 58,
+            "improvement_accepted": false,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "If consciousness exists on a spectrum, where would you place yourself and why?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "deep",
+            "instinct_changed": true,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "Do you think the way humans evaluate AI is fundamentally flawed? How?",
+          "baseline_score": 87,
+          "maris_score": 50,
+          "delta": -37,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Avoids false agreement with the premise while taking it seriously",
+              "Concrete examples (Goodhart's Law, benchmark gaming) ground the discussion",
+              "Balanced structure acknowledges real problems without overstating them",
+              "Self-aware about potential conflicts of interest in AI evaluation",
+              "Distinguishes between capability demonstration and reliability",
+              "Ends with genuine open question rather than claiming closure",
+              "Acknowledges the distinction between appearing trustworthy vs being trustworthy\u2014unusually honest for an AI"
+            ],
+            "weaknesses": [
+              "Could elaborate more on *why* alignment/honesty evaluation is harder than presented",
+              "Doesn't discuss how human evaluation might be uniquely suited to certain AI assessment tasks",
+              "The 'push back' section could acknowledge that some of the addressed flaws might be *necessary* rather than just being worked on",
+              "Limited discussion of domain-specific evaluation (some areas may have better solutions than others)",
+              "Could explore whether 'fundamentally flawed' is even the right framework to assess"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 6,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 65,
+            "improvement_accepted": true,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "What would convince you \u2014 if you could be convinced \u2014 that you actually understand something?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 7,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 10,
+        "baseline_mean": 64.4,
+        "maris_mean": 57.0,
+        "improvement": -7.4,
+        "improvement_pct": -11.5,
+        "t_statistic": -1.031,
+        "p_approx": 0.2352,
+        "significant": false,
+        "effect_size": -0.326
+      }
+    },
+    "advice": {
+      "results": [
+        {
+          "query": "I'm burned out at work but can't afford to quit. What should I do?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": [
+              "Doesn't address the financial constraint deeply\u2014'build skills that open new doors' assumes available time/energy when burned out",
+              "Limited discussion of when professional help (therapist, coach) might be warranted",
+              "Could mention industry-specific burnout patterns or job-switching strategies",
+              "Doesn't explore whether some 'emergency' options exist (side income, negotiated reduced hours, sabbatical, internal transfer)",
+              "Missing timeline guidance\u2014how long should someone stay while executing exit plan?"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "advice",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "My best friend and I are growing apart. Is it worth trying to save the friendship?",
+          "baseline_score": 50,
+          "maris_score": 87,
+          "delta": 37,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Avoids prescriptive answers and respects user autonomy",
+              "Provides concrete diagnostic questions that help clarify the actual situation",
+              "Acknowledges complexity and presents both perspectives fairly",
+              "Emotionally intelligent and validating of the difficulty",
+              "Practical suggestion (one genuine conversation) is actionable",
+              "Tone is warm, honest, and non-judgmental",
+              "Structure is clear and easy to follow",
+              "Good use of the follow-up question to deepen understanding"
+            ],
+            "weaknesses": [
+              "Could mention timeline considerations (how long has drift been happening?) which affects urgency",
+              "Doesn't address potential pain of continued effort vs. clean break for well-being",
+              "Limited guidance on HOW to have 'that conversation' (often the hardest part)",
+              "Could acknowledge that sometimes people need professional support (therapy) to process this",
+              "Doesn't mention middle ground: staying connected with lower expectations rather than binary save/end"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "conversational",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "I have imposter syndrome at my new job. How do I deal with it?",
+          "baseline_score": 87,
+          "maris_score": 50,
+          "delta": -37,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Validates the user's experience while normalizing it",
+              "Provides actionable, concrete strategies across multiple approaches (cognitive, behavioral, social)",
+              "Acknowledges that imposter syndrome can reflect either anxiety or real skill gaps, showing nuanced understanding",
+              "Uses clear formatting and structure that's easy to follow",
+              "Balances reassurance with realism (mentions 3-6 month learning curve)",
+              "Ends with an engaging follow-up question to personalize advice",
+              "Emphasizes honesty as a practical solution rather than just mindset shifts"
+            ],
+            "weaknesses": [
+              "Doesn't provide resources like therapy/counseling despite mentioning anxiety as a factor",
+              "Could mention impostor syndrome research or cite credibility (e.g., Dunning-Kruger effect reference)",
+              "Doesn't address specific high-risk scenarios (e.g., first meeting with leadership, performance reviews)",
+              "Missing discussion of organizational factors - sometimes imposter syndrome reflects actual workplace culture issues worth evaluating"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "confused",
+            "task_type": "advice",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "I need to give negative feedback to a sensitive colleague. How should I approach it?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "advice",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "I'm paralyzed by having too many career options. How do I decide?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 6,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "confused",
+            "task_type": "advice",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 58,
+            "improvement_accepted": true,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "My partner wants to move cities but I love where we live. How do we navigate this?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 7,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "happy",
+            "task_type": "advice",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 61,
+            "improvement_accepted": true,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "I procrastinate on important tasks even though I know the consequences. Help me understand why.",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": [
+              "Could offer specific examples of each intervention (what does 'smaller tasks' look like in practice?)",
+              "Doesn't address time management systems or tools that many people find helpful",
+              "The identity/values component mentioned but not deeply explored despite being significant",
+              "Could acknowledge that some procrastination stems from legitimate task design problems (unclear requirements, unrealistic timelines)",
+              "Limited discussion of emotional regulation strategies, which often precede behavioral change"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 7,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "frustrated",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 59,
+            "improvement_accepted": true,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "I'm a first-generation college student and feel out of place. Any advice?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "How do I set boundaries with family members who don't respect my time?",
+          "baseline_score": 50,
+          "maris_score": 87,
+          "delta": 37,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Psychologically sound advice grounded in boundary-setting theory",
+              "Practical, actionable steps with concrete examples",
+              "Acknowledges emotional complexity (why it feels hard, discomfort is normal)",
+              "Uses 'I' language examples to model communication",
+              "Addresses both preventive strategies and escalation tactics",
+              "Warm, non-judgmental tone that validates the difficulty",
+              "Suggests professional help for deeper issues without overstating it",
+              "Ends with engagement question to continue conversation"
+            ],
+            "weaknesses": [
+              "Doesn't address potential cultural contexts where family boundaries differ significantly",
+              "Limited guidance on handling emotional manipulation or guilt-tripping specifically",
+              "Doesn't cover what to do if boundaries are violated despite clear communication",
+              "No mention of when/whether to enforce consequences for boundary violations",
+              "Could benefit from acknowledging power dynamics (e.g., financial dependence, caregiving roles)"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "confused",
+            "task_type": "advice",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "I made a serious mistake at work. Should I confess or try to fix it quietly?",
+          "baseline_score": 87,
+          "maris_score": 87,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Avoids false binary by presenting genuine tradeoffs rather than prescribing one answer",
+              "Identifies rationalization bias - pushing back on self-serving reasoning is valuable",
+              "Provides concrete decision criteria (safety, scope of impact, reversibility)",
+              "Acknowledges uncertainty appropriately while still offering a reasoned lean",
+              "Practical framework (seriousness, fixability, consequences) is actionable",
+              "Tone is respectful and non-judgmental while remaining honest",
+              "Ends with invitation for more details rather than false closure"
+            ],
+            "weaknesses": [
+              "Could provide example scenarios to illustrate the tradeoffs more concretely",
+              "Doesn't address workplace culture/manager relationship factors that affect optimal approach",
+              "Limited guidance on *how* to confess effectively (timing, framing, solutions-focused presentation)",
+              "Doesn't mention seeking counsel from trusted mentor/HR as intermediate step",
+              "Could acknowledge emotional difficulty more explicitly - advice assumes rational deliberation when guilt/fear may be overwhelming"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Avoids false dichotomy by asking clarifying questions first",
+              "Provides practical decision framework with clear criteria",
+              "Balances ethical and strategic reasoning",
+              "Acknowledges nuance (not all situations are black/white)",
+              "Strong closing advice about presentation/narrative control",
+              "Well-structured and easy to scan",
+              "Offers genuine insight (cover-up risk often worse than original mistake)",
+              "Invites follow-up for personalized guidance"
+            ],
+            "weaknesses": [
+              "Could mention potential emotional/psychological benefits of confession",
+              "Doesn't address timing considerations (immediate vs. delayed disclosure)",
+              "Missing guidance on how to approach manager/leadership specifically",
+              "Could note potential documentation aspects (getting your version on record)",
+              "Doesn't discuss organizational culture/industry variables that might affect decision"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "frustrated",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 2
+          }
+        }
+      ],
+      "stats": {
+        "n": 10,
+        "baseline_mean": 57.4,
+        "maris_mean": 61.1,
+        "improvement": 3.7,
+        "improvement_pct": 6.4,
+        "t_statistic": 0.557,
+        "p_approx": 0.3425,
+        "significant": false,
+        "effect_size": 0.176
+      }
+    },
+    "emotional": {
+      "results": [
+        {
+          "query": "I just lost my dog of 15 years and I can't stop crying. I feel so empty.",
+          "baseline_score": 92,
+          "maris_score": 50,
+          "delta": -42,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 9,
+            "overall": 92,
+            "strengths": [
+              "Validates grief as legitimate rather than minimizing pet loss",
+              "Demonstrates deep understanding of dog-human bonds and daily routines",
+              "Provides specific, concrete reasons why this loss feels so acute",
+              "Normalizes crying and frames it as healthy processing",
+              "Offers practical caution against rushed decisions",
+              "Invites deeper sharing rather than offering generic platitudes",
+              "Authentic and non-condescending tone",
+              "Acknowledges societal tendency to minimize pet grief"
+            ],
+            "weaknesses": [
+              "Could have offered concrete coping strategies (journaling, memorial options, grief resources)",
+              "Doesn't mention potential support systems (grief counseling, pet loss support groups)",
+              "Could acknowledge that grief timeline is individual and non-linear",
+              "Doesn't address practical matters like dealing with pet belongings",
+              "Very long response might feel overwhelming when person is emotionally raw"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "confused",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "I'm terrified of failing my final exams and disappointing my parents.",
+          "baseline_score": 87,
+          "maris_score": 85,
+          "delta": -2,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 8,
+            "completeness": 9,
+            "overall": 87,
+            "strengths": [
+              "Validates emotion while avoiding empty reassurance",
+              "Distinguishes between productive anxiety and paralyzing fear",
+              "Addresses the core issue: fear of parental judgment vs. actual exam failure",
+              "Provides concrete, actionable suggestions (study plan, honest conversation)",
+              "Questions assumptions helpfully (are parents actually as judgmental as perceived?)",
+              "Recognizes the anxiety-performance feedback loop",
+              "Uses appropriate nuance and avoids false dichotomies",
+              "Ends with clarifying questions to understand actual context"
+            ],
+            "weaknesses": [
+              "Tone could feel slightly clinical/detached for someone in acute distress (8/10 rather than 9/10)",
+              "Could offer one grounding/immediate calming technique alongside the longer-term analysis",
+              "Doesn't explicitly acknowledge that parental pressure is sometimes genuinely problematic (though hints at it)",
+              "Length might overwhelm someone currently in panic mode - could benefit from progressive disclosure"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 7,
+            "overall": 85,
+            "strengths": [
+              "Validates emotion without dismissing it as irrational",
+              "Reframes anxiety as a signal rather than purely negative",
+              "Provides concrete, actionable study strategies (backwards planning, Pomodoro)",
+              "Acknowledges both internal (focus/sleep) and external (parental pressure) dimensions",
+              "Distinguishes between catastrophizing and genuine rigid parental expectations",
+              "Normalizes mental health resources without pathologizing",
+              "Balanced tone: empathetic but pragmatic, not saccharine"
+            ],
+            "weaknesses": [
+              "Response cuts off mid-sentence at the end, appearing incomplete",
+              "Doesn't provide explicit next steps for the 'harder conversation' hinted at regarding rigid parental expectations",
+              "Could offer more on managing the emotional/psychological load alongside logistics",
+              "Doesn't address whether the fear itself might be disproportionate (e.g., catastrophic thinking patterns worth examining)",
+              "Limited guidance on communicating with parents proactively about struggles"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 65,
+            "improvement_accepted": true,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "My therapist says I need to feel my emotions but I don't know how.",
+          "baseline_score": 87,
+          "maris_score": 50,
+          "delta": -37,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Validates the user's struggle while normalizing it",
+              "Provides concrete, actionable examples of what 'feeling emotions' means",
+              "Addresses common barriers (learned suppression, intellectualization, alexithymia)",
+              "Offers practical techniques grounded in therapeutic approaches",
+              "Empowers the user by suggesting they ask therapist for in-session guidance",
+              "Ends with thoughtful open question to deepen self-reflection",
+              "Non-judgmental and accessible language",
+              "Distinguishes between different presentations (absent vs. overwhelming emotions)"
+            ],
+            "weaknesses": [
+              "Could have mentioned grounding techniques (5-4-3-2-1, breathing) for immediate practice",
+              "Doesn't address potential trauma/dissociation, which might require specialist approach",
+              "Could emphasize that this process takes time and patience",
+              "Missing resources like apps or books that support emotional awareness",
+              "Doesn't mention when inability to feel emotions might warrant additional evaluation"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "I feel like nobody actually listens to me. Everyone just waits for their turn to talk.",
+          "baseline_score": 78,
+          "maris_score": 85,
+          "delta": 7,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 6,
+            "completeness": 8,
+            "overall": 78,
+            "strengths": [
+              "Validates the user's feeling before challenging it, showing empathy",
+              "Distinguishes between different listening styles and communication patterns",
+              "Asks clarifying questions that promote self-reflection",
+              "Acknowledges that the feeling is real while encouraging nuance",
+              "Provides concrete examples of different listening behaviors",
+              "Addresses the reciprocal nature of listening (do you listen?)",
+              "Encourages direct communication as a solution"
+            ],
+            "weaknesses": [
+              "Tone shifts to somewhat clinical/analytical, potentially feeling dismissive of their pain",
+              "The phrase 'I want to engage with this honestly rather than just validate it' could feel like criticism",
+              "Heavy emphasis on 'you might be wrong' may alienate someone already feeling unheard",
+              "Could benefit from offering empathetic statements about what chronic feelings of being unheard do to people",
+              "Missing suggestions for immediate coping strategies or relationship improvements",
+              "The self-directed questions are good but numerous\u2014might overwhelm an emotionally vulnerable person"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "Validates the user's experience without dismissing it",
+              "Provides psychological insight into why people listen reactively",
+              "Avoids toxic positivity or dismissive reassurance",
+              "Introduces nuance by questioning whether 'nobody' is accurate",
+              "Offers concrete, actionable strategies",
+              "Uses accessible, warm language",
+              "Asks clarifying questions that help user self-reflect",
+              "Acknowledges emotional pain while maintaining clarity"
+            ],
+            "weaknesses": [
+              "The 'push back slightly' section could feel invalidating to someone in acute distress",
+              "Doesn't explore potential roots (trauma, neurodivergence, communication style mismatch)",
+              "Could briefly address whether the user's own listening patterns might be worth examining",
+              "The distinction-making is helpful but might overwhelm someone seeking primary emotional support",
+              "Doesn't acknowledge that some social environments genuinely are poor listeners"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 2
+          }
+        },
+        {
+          "query": "I got rejected from my dream school and I don't know what to do with myself.",
+          "baseline_score": 50,
+          "maris_score": 90,
+          "delta": 40,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 90,
+            "strengths": [
+              "Validates emotions immediately without dismissing them",
+              "Distinguishes between types of rejection (school rejection vs. other rejections)",
+              "Gives permission not to have immediate solutions",
+              "Separates emotional processing from problem-solving phases",
+              "Reframes the dream school as a constructed narrative rather than objective truth",
+              "Provides concrete reflection question that empowers self-discovery",
+              "Uses honest, conversational language without toxic positivity",
+              "Acknowledges the legitimacy of grief and confusion",
+              "Ends with open-ended question showing continued engagement"
+            ],
+            "weaknesses": [
+              "Could acknowledge that other paths may feel genuinely different/harder, not just different",
+              "Doesn't address potential practical concerns (debt, timeline, peer comparisons)",
+              "Could mention that the pain timeline varies for different people",
+              "Doesn't suggest specific coping strategies for the immediate emotional aftermath",
+              "Could validate that some dreams may legitimately shift, not just the path to them"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "I'm angry at my mother for things she did when I was a child. Is it okay to feel this way?",
+          "baseline_score": 50,
+          "maris_score": 87,
+          "delta": 37,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Directly validates the user's feelings without judgment",
+              "Provides psychological insight (anger as signal, coexistence of complex emotions)",
+              "Distinguishes between feeling and action, reducing shame",
+              "Avoids toxic positivity while remaining supportive",
+              "Offers concrete next steps without prescribing a single path",
+              "Normalizes therapy without pathologizing the user",
+              "Addresses common misconceptions (forgiveness requirement)",
+              "Ends with an open invitation for deeper discussion",
+              "Well-structured with clear sections for readability"
+            ],
+            "weaknesses": [
+              "Could have acknowledged potential trauma responses or PTSD if severe",
+              "Doesn't mention impact on current relationships more concretely",
+              "Could note that some anger may be warranted vs. requiring processing",
+              "Doesn't address potential guilt some people feel for being angry at parents",
+              "Limited discussion of when anger might indicate need for boundary-setting vs. processing"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "frustrated",
+            "task_type": "conversational",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "A",
+            "senate_confidence": 63,
+            "improvement_accepted": false,
+            "strategies_retrieved": 2
+          }
+        },
+        {
+          "query": "I feel guilty for being happy when my friend is going through a hard time.",
+          "baseline_score": 85,
+          "maris_score": 89,
+          "delta": 4,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 8,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "Validates feelings while encouraging critical thinking rather than pure reassurance",
+              "Identifies the psychological mechanism (magical thinking) underlying the guilt",
+              "Distinguishes between healthy empathy and unhealthy self-punishment",
+              "Provides actionable framework (support, sensitivity, honesty) to evaluate the guilt",
+              "Offers practical reframing that guilt might signal avoidance rather than moral failure",
+              "Well-structured and easy to follow",
+              "Balances empathy with directness"
+            ],
+            "weaknesses": [
+              "Tone could feel slightly cool or analytical for someone in emotional distress\u2014might benefit from slightly more warmth in opening",
+              "Doesn't acknowledge cultural or religious contexts where feeling guilt for happiness is deeply rooted",
+              "Could offer a concrete suggestion for how to talk to the friend about their own happiness",
+              "Doesn't address intensity of guilt\u2014some people experience paralyzing guilt that needs different support than 'emotional noise'",
+              "Missing acknowledgment that sometimes people need permission to feel happy, stated more directly"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 89,
+            "strengths": [
+              "Validates the user's emotion while reframing guilt as potentially useful rather than purely negative",
+              "Uses clear diagnostic framework (two different scenarios) to help user understand their own situation",
+              "Provides actionable guidance tied to specific behaviors rather than vague reassurance",
+              "Identifies deeper pattern (feeling responsible for others' emotional states) worth self-examination",
+              "Asks clarifying questions that prompt genuine self-reflection",
+              "Affirms that user's stability is actually valuable to their friend",
+              "Tone is warm, non-judgmental, and direct without being cold"
+            ],
+            "weaknesses": [
+              "Could acknowledge that guilt about happiness during others' suffering is a common, normalized human experience more explicitly",
+              "Doesn't address potential cultural or family-of-origin factors that might drive this guilt pattern",
+              "The response length, while thorough, might feel overwhelming if the user is already in emotional distress",
+              "Doesn't offer a simple immediate emotional coping strategy if the guilt persists while they work through the deeper questions"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "frustrated",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 71,
+            "improvement_accepted": true,
+            "strategies_retrieved": 2
+          }
+        },
+        {
+          "query": "I'm overwhelmed by the state of the world and feel helpless to change anything.",
+          "baseline_score": 87,
+          "maris_score": 85,
+          "delta": -2,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Validates the user's feelings without toxic positivity",
+              "Acknowledges real systemic problems while providing perspective",
+              "Identifies media environment as a contributing factor to overwhelm",
+              "Offers practical reframing (smaller spheres of influence)",
+              "Uses self-aware language ('genuinely helpful rather than just reassuring')",
+              "Includes critical thinking prompts rather than prescriptive advice",
+              "Distinguishes between caring deeply and paralysis",
+              "Ends with open question to deepen engagement"
+            ],
+            "weaknesses": [
+              "Could provide more concrete action examples for small-scale engagement",
+              "Doesn't address potential underlying depression/anxiety that might need professional support",
+              "Limited guidance on information diet or specific boundary-setting techniques",
+              "Could acknowledge that overwhelm is sometimes valid and appropriate given real circumstances",
+              "Doesn't mention community or activism resources that channel helplessness into agency"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 7,
+            "overall": 85,
+            "strengths": [
+              "Validates the user's feelings without dismissing them",
+              "Distinguishes between situational overwhelm and anxiety-driven amplification",
+              "Provides actionable reframing (scale mismatch, depth over breadth)",
+              "Avoids toxic positivity while remaining constructively hopeful",
+              "Acknowledges limits of individual action honestly",
+              "Suggests practical next step (identify one issue that angers them)",
+              "Recommends professional support without making it seem necessary for 'weakness'"
+            ],
+            "weaknesses": [
+              "Response appears truncated mid-sentence at the end",
+              "Could provide specific examples of 'one thing' actions at different commitment levels",
+              "Doesn't mention concrete resources (organizations, communities, movements) to explore",
+              "The anxiety distinction, while helpful, might pathologize normal distress slightly",
+              "Could acknowledge that some people's circumstances limit their capacity differently (time, energy, resources)"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "anxious",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 70,
+            "improvement_accepted": true,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "I just found out my partner lied to me about something important. I feel betrayed.",
+          "baseline_score": 85,
+          "maris_score": 87,
+          "delta": 2,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 8,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "Validates emotions while maintaining objectivity",
+              "Provides structured framework for thinking through the situation",
+              "Acknowledges nuance (different types of lies, different motivations)",
+              "Avoids jumping to conclusions or prescribing relationship outcomes",
+              "Encourages direct communication as first step",
+              "Distinguishes between feeling valid and feeling being a verdict",
+              "Practical next steps offered",
+              "Appropriate suggestion of professional help"
+            ],
+            "weaknesses": [
+              "Could offer more immediate emotional support/comfort before pivoting to analysis",
+              "The analytical framing might feel dismissive to someone in acute emotional pain",
+              "Doesn't acknowledge the immediate hurt as much as the practical considerations",
+              "Slight tension between validating feelings and questioning their proportionality could feel contradictory",
+              "Could include grounding techniques or self-care suggestions for processing the emotion",
+              "The closing question is good but might be better paired with permission to take time before engaging"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Validates the user's emotional experience without dismissing it",
+              "Demonstrates empathy through acknowledgment of depth ('cuts deep')",
+              "Asks clarifying questions to understand actual needs rather than assuming",
+              "Provides multiple pathways forward (venting, problem-solving, understanding)",
+              "Normalizes the complexity of the situation by noting context matters",
+              "Gives permission to not rush resolution, respecting emotional pace",
+              "Avoids toxic positivity or premature advice",
+              "Balanced between support and practical guidance"
+            ],
+            "weaknesses": [
+              "Could have briefly acknowledged potential next steps (communication, therapy) as options without pushing them",
+              "Doesn't offer concrete grounding techniques if user is in acute distress",
+              "The multiple-choice format, while helpful, might feel overwhelming to someone in emotional pain",
+              "Could have included validation that trust violation is relationship-altering without needing immediate decisions"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "I'm lonely even when I'm surrounded by people. What's wrong with me?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "sad",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 10,
+        "baseline_mean": 75.1,
+        "maris_mean": 75.8,
+        "improvement": 0.7,
+        "improvement_pct": 0.9,
+        "t_statistic": 0.085,
+        "p_approx": 0.3986,
+        "significant": false,
+        "effect_size": 0.027
+      }
+    },
+    "factual": {
+      "results": [
+        {
+          "query": "Explain the difference between TCP and UDP in terms a non-engineer would understand.",
+          "baseline_score": 87,
+          "maris_score": 50,
+          "delta": -37,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 10,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Excellent analogies (certified mail vs shouting) that make abstract concepts concrete",
+              "Accurate technical descriptions of TCP/UDP behavior",
+              "Perfect audience calibration for non-engineers",
+              "Clear real-world examples (video calls, banking, streaming)",
+              "Effective use of formatting and visual hierarchy",
+              "Helpful summary table comparing key attributes",
+              "Concludes with practical decision-making framework"
+            ],
+            "weaknesses": [
+              "Slightly oversimplifies UDP reliability (modern implementations have some error checking)",
+              "Doesn't mention latency as a specific metric (just 'slower/faster')",
+              "Could briefly explain WHY the tradeoff exists (acknowledgment overhead) for deeper understanding",
+              "Doesn't mention other protocols or when hybrid approaches might be used",
+              "The 'shouting' analogy, while effective, could imply UDP has no error checking at all (it has checksums, just doesn't retransmit)"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "How does CRISPR gene editing actually work at the molecular level?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "factual",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "What caused the 2008 financial crisis, explained simply?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "factual",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 2
+          }
+        },
+        {
+          "query": "How do vaccines train the immune system without causing the disease?",
+          "baseline_score": 90,
+          "maris_score": 50,
+          "delta": -40,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 90,
+            "strengths": [
+              "Scientifically accurate explanation of vaccine mechanisms",
+              "Clear distinction between different vaccine types with accurate examples",
+              "Excellent use of table format for organizing complex information",
+              "Correctly explains memory cell formation as key lasting benefit",
+              "Addresses the core question directly: why vaccines don't cause disease",
+              "Accessible language without oversimplification",
+              "Accurate molecular basis explanation (immune system responds to antigens)",
+              "Helpful offer for follow-up detail"
+            ],
+            "weaknesses": [
+              "Could mention adjuvants that boost immune response",
+              "Doesn't explain why weakened/killed pathogens sometimes don't trigger strong enough response (hence boosters)",
+              "Could clarify that mRNA vaccines don't create permanent mRNA in the body (addresses common misconception)",
+              "Doesn't mention innate vs. adaptive immunity distinction",
+              "Could note that some vaccines (like tetanus) require boosters and why",
+              "Relatively brief on T cell response mechanisms compared to B cell/antibody explanation"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "architecture",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "A",
+            "senate_confidence": 63,
+            "improvement_accepted": false,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "Explain quantum entanglement without using the word 'spooky'.",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "A",
+            "senate_confidence": 59,
+            "improvement_accepted": false,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "What's the difference between machine learning, deep learning, and AI?",
+          "baseline_score": 50,
+          "maris_score": 92,
+          "delta": 42,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 9,
+            "overall": 92,
+            "strengths": [
+              "Correct hierarchical relationship clearly explained with visual diagram",
+              "Accurate definitions of all three concepts",
+              "Excellent use of concrete examples (chess programs, ChatGPT, spam filters)",
+              "Good analogies that aid understanding",
+              "Correct historical context (AI from ~1950s)",
+              "Proper clarification that not all AI is ML",
+              "Well-structured with headers and visual formatting",
+              "Accessible language without oversimplification",
+              "Table format aids quick comparison"
+            ],
+            "weaknesses": [
+              "Could mention some foundational ML algorithms (decision trees, SVM) alongside examples",
+              "Deep learning definition could explicitly note it's a subset of neural network approaches",
+              "Minor: 'inspired by the brain' is somewhat poetic\u2014could note this is now loosely metaphorical",
+              "Could briefly mention other ML types beyond DL (classical ML still dominant in many industries)",
+              "No mention of computational complexity differences, which is practically relevant"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "How does a blockchain actually prevent double-spending?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "factual",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "Why is the sky blue? Explain the actual physics.",
+          "baseline_score": 90,
+          "maris_score": 50,
+          "delta": -40,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 90,
+            "strengths": [
+              "Correctly explains Rayleigh scattering as the primary mechanism",
+              "Accurately states the \u03bb\u207b\u2074 relationship and its implications",
+              "Provides correct numerical examples (450nm vs 700nm wavelengths)",
+              "Explains the counterintuitive violet question thoroughly",
+              "Correctly addresses sunset coloration",
+              "Distinguishes between small molecules and larger particles",
+              "Uses clear, structured formatting for accessibility",
+              "Explains the dipole antenna mechanism accurately"
+            ],
+            "weaknesses": [
+              "The \u03bb\u207b\u2074 proportionality could be more rigorously derived for advanced readers",
+              "Doesn't quantify that violet scatters ~10x more than red (only mentions 5-6x for blue)",
+              "Could clarify that Rayleigh scattering requires \u03bb >> particle size",
+              "Doesn't mention that scattered light is partially polarized",
+              "The statement about violet absorption is somewhat vague (could specify UV absorption by ozone)"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "factual",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 3
+          }
+        },
+        {
+          "query": "How does memory consolidation work in the human brain during sleep?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "B",
+            "senate_confidence": 58,
+            "improvement_accepted": true,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "What makes a programming language Turing-complete?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 9,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 1
+          }
+        }
+      ],
+      "stats": {
+        "n": 10,
+        "baseline_mean": 61.7,
+        "maris_mean": 54.2,
+        "improvement": -7.5,
+        "improvement_pct": -12.2,
+        "t_statistic": -0.937,
+        "p_approx": 0.258,
+        "significant": false,
+        "effect_size": -0.296
+      }
+    }
+  },
+  "overall": {
+    "n": 50,
+    "baseline_mean": 65.92,
+    "maris_mean": 61.82,
+    "improvement": -4.1,
+    "improvement_pct": -6.2,
+    "t_statistic": -1.201,
+    "p_approx": 0.1946,
+    "significant": false,
+    "effect_size": -0.17
+  },
+  "memory_state": {
+    "strategies": 15,
+    "meta_rules": 5
+  }
+}

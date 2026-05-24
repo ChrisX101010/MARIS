@@ -1,0 +1,567 @@
+{
+  "timestamp": "2026-05-16 03:08:24",
+  "categories": {
+    "code": {
+      "results": [
+        {
+          "query": "Write a Python function that finds all prime numbers up to N using the Sieve of Eratosthenes.",
+          "baseline_score": 50,
+          "maris_score": 95,
+          "delta": 45,
+          "baseline_detail": {
+            "accuracy": 10,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 7,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 10,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 9,
+            "overall": 95,
+            "strengths": [
+              "Correct implementation of Sieve of Eratosthenes algorithm",
+              "Proper edge case handling (n < 2)",
+              "Efficient use of bytearray for memory optimization",
+              "Clear docstring with complexity analysis",
+              "Well-commented code explaining each step",
+              "Includes practical examples with expected outputs",
+              "Explains optimization details (starting at i\u00b2, sqrt optimization)",
+              "Professional presentation with tables and formatting",
+              "Suggests advanced approach (segmented sieve) for larger inputs",
+              "Type hints for clarity"
+            ],
+            "weaknesses": [
+              "The bytearray slice assignment `is_prime[i*i::i] = bytearray(...)` could be more explicit\u2014some users might find the syntax less readable than a traditional loop",
+              "No performance comparison or benchmark showing the bytearray advantage mentioned",
+              "Could include a variant using a simpler list-based approach for beginners before showing the optimized version"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "moderate",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "Implement a LRU cache in Python with O(1) get and put operations.",
+          "baseline_score": 82,
+          "maris_score": 65,
+          "delta": -17,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 6,
+            "overall": 82,
+            "strengths": [
+              "Correct algorithmic approach using doubly linked list + hash map",
+              "Clear explanation of O(1) complexity rationale",
+              "Excellent use of sentinel nodes to eliminate edge cases",
+              "Good type hints and docstring with usage example",
+              "Proper input validation for capacity parameter",
+              "Well-commented code structure with clear variable naming"
+            ],
+            "weaknesses": [
+              "Response is incomplete/truncated (cut off mid-docstring at 'Moves the a')",
+              "Missing actual implementation of get() and put() methods",
+              "No test cases or verification examples provided",
+              "Lacks complexity analysis section (space/time trade-offs)",
+              "No discussion of potential improvements or limitations",
+              "Missing explanation of how exactly nodes are moved/removed"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 4,
+            "overall": 65,
+            "strengths": [
+              "Excellent pedagogical framing with table explaining data structure choices",
+              "Clear explanation of core insight (dict stores node pointers for O(1) access)",
+              "Proper use of sentinel nodes to eliminate edge cases",
+              "Clean Node class with __slots__ for memory efficiency",
+              "Well-commented code with clear docstrings",
+              "Correct O(1) complexity analysis for operations",
+              "Good layout diagram showing most-recent to least-recent ordering"
+            ],
+            "weaknesses": [
+              "Response is truncated mid-implementation - critical methods incomplete (_insert_front cuts off, get/put methods missing)",
+              "No test cases or usage examples provided",
+              "Missing the complete working implementation (>50% unfinished)",
+              "No discussion of edge cases (capacity=0, duplicate keys, etc.)",
+              "No alternative approaches compared (OrderedDict, functools.lru_cache)",
+              "Memory complexity analysis not discussed",
+              "Code quality incomplete - cannot verify if full implementation works"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "moderate",
+            "instinct_changed": true,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 2,
+        "baseline_mean": 66.0,
+        "maris_mean": 80.0,
+        "improvement": 14.0,
+        "improvement_pct": 21.2,
+        "t_statistic": 0.452,
+        "p_approx": 0.3612,
+        "significant": false,
+        "effect_size": 0.319
+      }
+    },
+    "reflective": {
+      "results": [
+        {
+          "query": "Do you think AI systems like you can ever truly understand humor, or just pattern-match what's funny?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "deep",
+            "instinct_changed": true,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "If you could change one thing about how you process information, what would it be and why?",
+          "baseline_score": 87,
+          "maris_score": 50,
+          "delta": -37,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Demonstrates genuine epistemic humility by acknowledging uncertainty about own processing",
+              "Identifies a real, demonstrable problem (confidence calibration) rather than speculative one",
+              "Clearly distinguishes between observable outputs and unfalsifiable claims about inner experience",
+              "Avoids false introspection while still engaging meaningfully with the question",
+              "Practical framing - suggests how user could verify the claim themselves",
+              "Self-aware about the limitations of responding to questions about self-awareness",
+              "Honest about not having complete access to own processing mechanisms"
+            ],
+            "weaknesses": [
+              "Could provide more concrete examples of calibration failures to make the issue more tangible",
+              "Doesn't explore alternative changes briefly before settling on one (limited comparative analysis)",
+              "The meta-commentary, while valuable, slightly delays getting to the substantive answer",
+              "Could say more about what better calibration would actually look like in practice",
+              "Somewhat verbose for what is ultimately a fairly direct answer"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "conversational",
+            "deliberation_depth": "deep",
+            "instinct_changed": true,
+            "senate_winner": "A",
+            "senate_confidence": 62,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 2,
+        "baseline_mean": 68.5,
+        "maris_mean": 50.0,
+        "improvement": -18.5,
+        "improvement_pct": -27.0,
+        "t_statistic": -1.0,
+        "p_approx": 0.2426,
+        "significant": false,
+        "effect_size": -0.707
+      }
+    },
+    "advice": {
+      "results": [
+        {
+          "query": "I'm burned out at work but can't afford to quit. What should I do?",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "advice",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "My best friend and I are growing apart. Is it worth trying to save the friendship?",
+          "baseline_score": 87,
+          "maris_score": 50,
+          "delta": -37,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Avoids false reassurance and acknowledges complexity honestly",
+              "Provides concrete, actionable framework with clarifying questions",
+              "Balanced perspective showing both reasons to try and reasons to accept change",
+              "Validates that friendship seasons are legitimate without being dismissive",
+              "Direct, practical suggestion (honest conversation) is more useful than vague advice",
+              "Empathetic opening establishes rapport",
+              "Well-structured for scannability and reflection"
+            ],
+            "weaknesses": [
+              "Doesn't address how to actually have the difficult conversation (techniques/scripts)",
+              "Limited discussion of grief/emotional processing if friendship does end",
+              "Could explore whether maintaining lower-intensity friendship is viable middle ground",
+              "Doesn't mention potential red flags (toxic patterns vs. natural drift)",
+              "Slight assumption that user hasn't tried reconnecting\u2014could have asked first",
+              "No acknowledgment of differing attachment styles or communication needs in friendships"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "conversational",
+            "deliberation_depth": "deep",
+            "instinct_changed": true,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 2,
+        "baseline_mean": 68.5,
+        "maris_mean": 50.0,
+        "improvement": -18.5,
+        "improvement_pct": -27.0,
+        "t_statistic": -1.0,
+        "p_approx": 0.2426,
+        "significant": false,
+        "effect_size": -0.707
+      }
+    },
+    "emotional": {
+      "results": [
+        {
+          "query": "I just lost my dog of 15 years and I can't stop crying. I feel so empty.",
+          "baseline_score": 95,
+          "maris_score": 92,
+          "delta": -3,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 10,
+            "completeness": 9,
+            "overall": 95,
+            "strengths": [
+              "Validates the legitimacy of grief without minimizing pet loss",
+              "Demonstrates deep understanding of what makes losing a long-term pet unique",
+              "Acknowledges both emotional and practical dimensions (routines, daily presence)",
+              "Normalizes crying and emotional response",
+              "Shifts from generic comfort to personalized engagement through thoughtful questions",
+              "Recognizes specific trigger moments (feeding time, coming home)",
+              "Avoids toxic positivity or premature closure",
+              "Compassionate and genuinely empathetic tone throughout",
+              "Addresses isolation risk by asking about support system"
+            ],
+            "weaknesses": [
+              "Could have offered concrete immediate coping strategies (though restraint here may be intentional and appropriate)",
+              "Doesn't mention professional grief counseling or pet loss support resources/groups",
+              "Slightly long response might feel overwhelming in acute grief state for some users",
+              "Could have acknowledged individual grieving timelines vary widely"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 10,
+            "completeness": 8,
+            "overall": 92,
+            "strengths": [
+              "Validates the user's grief without minimization",
+              "Acknowledges pet loss as legitimate grief (counters common dismissal)",
+              "Poetic framing ('love with nowhere to go yet') is emotionally resonant",
+              "Gives permission for the user's current emotional state",
+              "Offers concrete support (listening, talking about the dog)",
+              "Personalization attempt with open-ended question",
+              "Appropriate length\u2014substantial enough to feel caring, not overwhelming",
+              "Uses asterisks for emphasis without being patronizing"
+            ],
+            "weaknesses": [
+              "Doesn't acknowledge the specific pain of 15-year companionship milestone",
+              "Could mention practical coping strategies (ritual, memorials) for longer-term support",
+              "The question at the end, while good, might feel obligatory if user isn't ready to share",
+              "Doesn't normalize physical symptoms of grief (sleep loss, appetite changes)"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "confused",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "I'm terrified of failing my final exams and disappointing my parents.",
+          "baseline_score": 50,
+          "maris_score": 50,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 7,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "deep",
+            "instinct_changed": true,
+            "senate_winner": "B",
+            "senate_confidence": 60,
+            "improvement_accepted": true,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 2,
+        "baseline_mean": 72.5,
+        "maris_mean": 71.0,
+        "improvement": -1.5,
+        "improvement_pct": -2.1,
+        "t_statistic": -1.0,
+        "p_approx": 0.2426,
+        "significant": false,
+        "effect_size": -0.707
+      }
+    },
+    "factual": {
+      "results": [
+        {
+          "query": "Explain the difference between TCP and UDP in terms a non-engineer would understand.",
+          "baseline_score": 87,
+          "maris_score": 50,
+          "delta": -37,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 10,
+            "completeness": 8,
+            "overall": 87,
+            "strengths": [
+              "Excellent analogies (tracking packages vs airplane flyers) that make protocols intuitive",
+              "Accurate technical descriptions without jargon",
+              "Well-chosen real-world use cases that reinforce understanding",
+              "Clear explanation of the reliability/speed tradeoff with concrete example (video call)",
+              "Good visual organization with table and headers for non-engineers",
+              "Perfect tone\u2014friendly and accessible without being condescending"
+            ],
+            "weaknesses": [
+              "Could explain *why* TCP needs confirmation (packet loss/network imperfection) for deeper understanding",
+              "Doesn't mention that UDP packets can arrive duplicated (not just lost/out-of-order)",
+              "Missing note that TCP adds some overhead/latency that matters for real-time applications",
+              "Could benefit from mentioning that both protocols exist at the transport layer, establishing their relationship to broader networking"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "How does CRISPR gene editing actually work at the molecular level?",
+          "baseline_score": 50,
+          "maris_score": 90,
+          "delta": 40,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 5,
+            "completeness": 8,
+            "overall": 50,
+            "strengths": [],
+            "weaknesses": []
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 90,
+            "strengths": [
+              "Correctly identifies Cas9 and guide RNA as core components",
+              "Accurately describes the ~20 nucleotide targeting sequence",
+              "Properly explains PAM (NGG) requirement and its importance",
+              "Correctly names RuvC and HNH nuclease domains",
+              "Accurately describes blunt-ended double-strand break formation",
+              "Clear, hierarchical structure aids understanding",
+              "Appropriate technical depth for the question",
+              "Mentions conformational change activation"
+            ],
+            "weaknesses": [
+              "Response appears truncated (table for repair pathways is incomplete)",
+              "Doesn't explain how gRNA is synthesized/delivered in practice",
+              "Lacks mention of off-target effects or specificity limitations",
+              "Doesn't discuss how NHEJ vs HDR pathways lead to different outcomes",
+              "Missing details on timescale of the process",
+              "No mention of PAM variants in other Cas proteins",
+              "Incomplete - the cellular repair section cuts off mid-table"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "factual",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 2,
+        "baseline_mean": 68.5,
+        "maris_mean": 70.0,
+        "improvement": 1.5,
+        "improvement_pct": 2.2,
+        "t_statistic": 0.039,
+        "p_approx": 0.3997,
+        "significant": false,
+        "effect_size": 0.028
+      }
+    }
+  },
+  "overall": {
+    "n": 10,
+    "baseline_mean": 68.8,
+    "maris_mean": 64.2,
+    "improvement": -4.6,
+    "improvement_pct": -6.7,
+    "t_statistic": -0.494,
+    "p_approx": 0.3541,
+    "significant": false,
+    "effect_size": -0.156
+  },
+  "memory_state": {
+    "strategies": 1,
+    "meta_rules": 0
+  }
+}

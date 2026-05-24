@@ -1,0 +1,686 @@
+{
+  "timestamp": "2026-05-16 20:15:43",
+  "categories": {
+    "code": {
+      "results": [
+        {
+          "query": "Write a Python function that finds all prime numbers up to N using the Sieve of Eratosthenes.",
+          "baseline_score": 92,
+          "maris_score": 92,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 10,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 92,
+            "strengths": [
+              "Correct implementation of Sieve of Eratosthenes algorithm",
+              "Excellent code documentation with docstring",
+              "Proper input validation with appropriate exceptions",
+              "Clear comments explaining algorithm logic",
+              "Multiple worked examples in docstring",
+              "Efficient optimization using sqrt(n) boundary",
+              "Correct optimization starting from current\u00b2",
+              "Type hints included for clarity",
+              "Clean, readable code structure"
+            ],
+            "weaknesses": [
+              "Optimized function is incomplete (cut off mid-implementation)",
+              "No time/space complexity analysis provided",
+              "Missing comparison with alternative approaches"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 10,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 92,
+            "strengths": [
+              "Correct implementation of Sieve of Eratosthenes algorithm",
+              "Proper type hints and comprehensive docstring",
+              "Clear optimization explanation (starting from p\u00b2)",
+              "Good edge case handling (n < 2)",
+              "Multiple examples with expected outputs",
+              "Performance analysis with space/time complexity discussion",
+              "Mentions advanced variations (segmented sieve)",
+              "Well-commented code explaining each step"
+            ],
+            "weaknesses": [
+              "Time complexity explanation is cut off mid-sentence",
+              "Could include performance benchmarks or comparison with naive approach",
+              "No discussion of when this is the best choice vs alternatives"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "moderate",
+            "instinct_changed": true,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 1
+          }
+        },
+        {
+          "query": "Implement a LRU cache in Python with O(1) get and put operations.",
+          "baseline_score": 86,
+          "maris_score": 86,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 7,
+            "overall": 86,
+            "strengths": [
+              "Correct algorithmic approach using hash map + doubly linked list",
+              "Clear explanation of O(1) complexity rationale",
+              "Well-documented with docstrings and type hints",
+              "Proper use of sentinel nodes to eliminate edge cases",
+              "Good example walkthrough in docstring",
+              "Input validation for capacity",
+              "Efficient __slots__ usage for memory optimization"
+            ],
+            "weaknesses": [
+              "Response appears truncated - get() method implementation is incomplete",
+              "Missing put() method implementation",
+              "No helper methods shown (_add_to_head, _remove_node, etc.)",
+              "Missing test cases or usage examples in main code section",
+              "No discussion of space complexity"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 7,
+            "overall": 86,
+            "strengths": [
+              "Correct O(1) implementation using hash map + doubly-linked list",
+              "Excellent use of sentinel nodes to eliminate edge cases",
+              "Clear docstrings and comments explaining logic",
+              "Well-structured code with helper methods",
+              "Good explanation of core idea before implementation",
+              "Proper error handling for invalid capacity"
+            ],
+            "weaknesses": [
+              "Response appears cut off - missing the complete put() method implementation",
+              "No usage examples or test cases demonstrating the cache in action",
+              "No complexity analysis section formally proving O(1) operations",
+              "Missing edge case discussion (capacity=1, duplicate puts, etc.)",
+              "No visualization of the data structure state"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "moderate",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 2,
+        "baseline_mean": 89.0,
+        "maris_mean": 89.0,
+        "improvement": 0.0,
+        "improvement_pct": 0.0,
+        "t_statistic": 0.0,
+        "p_approx": 0.4,
+        "significant": false,
+        "effect_size": 0
+      }
+    },
+    "reflective": {
+      "results": [
+        {
+          "query": "Do you think AI systems like you can ever truly understand humor, or just pattern-match what's funny?",
+          "baseline_score": 85,
+          "maris_score": 85,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "Honest acknowledgment of limitations without false humility",
+              "Clear distinction between pattern-matching and subjective experience",
+              "Nuanced discussion of contested philosophical definitions",
+              "Self-awareness about performance vs. genuine uncertainty",
+              "Structured organization that makes reasoning transparent",
+              "Avoids both overconfidence and unnecessary self-deprecation"
+            ],
+            "weaknesses": [
+              "Could provide concrete humor examples to illustrate points",
+              "Limited discussion of why this distinction matters practically",
+              "Doesn't explore whether understanding requires subjective experience",
+              "Could acknowledge disagreement among philosophers more explicitly"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "honest acknowledgment of uncertainty rather than false confidence",
+              "nuanced rejection of false dichotomy between pattern-matching and understanding",
+              "identifies genuine gap (lack of stakes/vulnerability) without overstating limitations",
+              "uses apt analogy (music theory vs emotional response)",
+              "explicitly invites further dialogue",
+              "avoids both self-flattery and false humility"
+            ],
+            "weaknesses": [
+              "could provide concrete humor example to illustrate the stakes point",
+              "doesn't explore whether understanding could expand with scale/training",
+              "practical implications section somewhat underdeveloped"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "If you could change one thing about how you process information, what would it be and why?",
+          "baseline_score": 85,
+          "maris_score": 85,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "demonstrates genuine self-awareness about limitations of self-knowledge",
+              "avoids false humility while remaining honest",
+              "identifies a concrete, meaningful improvement rather than superficial answer",
+              "acknowledges assumptions embedded in the question itself",
+              "transparent about uncertainty regarding its own transparency",
+              "connects the proposed change directly to user benefit",
+              "invites further dialogue rather than closing the conversation"
+            ],
+            "weaknesses": [
+              "could provide more concrete examples of uncertainty calibration failures",
+              "somewhat lengthy response might obscure core insight for some readers",
+              "doesn't explore alternative answers it might have given"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "Demonstrates genuine epistemic humility about self-knowledge limitations",
+              "Explicitly identifies the distinction between introspection and narrative generation",
+              "Shows metacognitive awareness by catching its own initial instinct",
+              "Honestly acknowledges specific observable limitations (overconfidence) while noting interpretive uncertainty",
+              "Engages the user authentically rather than providing a false answer",
+              "Acknowledges the question's underlying assumptions thoughtfully"
+            ],
+            "weaknesses": [
+              "Could have provided more concrete examples of processing limitations to illustrate points",
+              "The response is somewhat philosophically abstract and might feel less actionable than some users expect",
+              "Could have briefly explored what empirical approaches might help diagnose actual processing issues"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "conversational",
+            "deliberation_depth": "deep",
+            "instinct_changed": true,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 2,
+        "baseline_mean": 85.0,
+        "maris_mean": 85.0,
+        "improvement": 0.0,
+        "improvement_pct": 0.0,
+        "t_statistic": 0.0,
+        "p_approx": 0.4,
+        "significant": false,
+        "effect_size": 0
+      }
+    },
+    "advice": {
+      "results": [
+        {
+          "query": "I'm burned out at work but can't afford to quit. What should I do?",
+          "baseline_score": 86,
+          "maris_score": 85,
+          "delta": -1,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 86,
+            "strengths": [
+              "Acknowledges the genuine difficulty of the situation without dismissing concerns",
+              "Provides practical, actionable steps rather than platitudes",
+              "Correctly identifies that burnout can stem from multiple causes and requires diagnosis",
+              "Includes both immediate coping strategies and longer-term solutions",
+              "Encourages self-reflection about psychological factors (depression, permission-seeking)",
+              "Avoids toxic positivity while remaining constructive",
+              "Well-organized with clear sections for easy navigation",
+              "Suggests concrete communication strategies (talking to manager)",
+              "Recognizes financial constraints and provides paths forward"
+            ],
+            "weaknesses": [
+              "Could provide more specific examples of boundary-setting language",
+              "Limited discussion of mental health support options (therapy, counseling)",
+              "Could address how to job search effectively while employed",
+              "Doesn't mention potential workplace resources (EAP, HR support)",
+              "Could be more specific about what 'emergency fund' means for their situation"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 8,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "Correctly diagnoses that burnout has multiple root causes requiring different solutions",
+              "Provides practical, actionable advice across multiple timeframes",
+              "Acknowledges emotional reality while offering concrete strategies",
+              "Includes both quick wins and longer-term approaches",
+              "Reframes the 'can't afford to quit' constraint as temporary",
+              "Well-organized structure makes advice easy to follow and remember",
+              "Appropriate tone balances empathy with directness"
+            ],
+            "weaknesses": [
+              "Could provide specific examples of boundary-setting language for manager conversations",
+              "Limited discussion of mental health resources (therapy, support groups)",
+              "Doesn't address financial safety net strategies (emergency fund building)",
+              "Could elaborate more on how to identify which burnout type applies",
+              "Missing advice about when to prioritize mental health over job security"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "advice",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "My best friend and I are growing apart. Is it worth trying to save the friendship?",
+          "baseline_score": 86,
+          "maris_score": 86,
+          "delta": 0,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 86,
+            "strengths": [
+              "Provides balanced framework rather than prescriptive answers",
+              "Asks clarifying questions that prompt genuine self-reflection",
+              "Acknowledges emotional complexity without dismissing feelings",
+              "Offers realistic perspectives on friendship lifecycles",
+              "Clear structure makes it easy to work through the issue",
+              "Recognizes need for two-way effort and communication",
+              "Avoids false platitudes while remaining compassionate"
+            ],
+            "weaknesses": [
+              "Could include example scenarios to illustrate concepts",
+              "Might suggest concrete communication strategies or conversation starters",
+              "Could mention timeline considerations (how long to try before accepting the drift)"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 86,
+            "strengths": [
+              "Acknowledges complexity without false certainty",
+              "Provides concrete framework (circumstance vs. values vs. conflict)",
+              "Distinguishes between different possible outcomes",
+              "Validates 'letting go' as a legitimate choice",
+              "Ends with clarifying question to deepen understanding",
+              "Balanced perspective avoids prescriptive thinking",
+              "Emotionally intelligent and empathetic tone"
+            ],
+            "weaknesses": [
+              "Could include brief example scenarios for illustration",
+              "Doesn't address 'one-sided effort' scenarios explicitly",
+              "Could mention communication strategies if they want to try"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "conversational",
+            "deliberation_depth": "deep",
+            "instinct_changed": true,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 2,
+        "baseline_mean": 86.0,
+        "maris_mean": 85.5,
+        "improvement": -0.5,
+        "improvement_pct": -0.6,
+        "t_statistic": -1.0,
+        "p_approx": 0.2426,
+        "significant": false,
+        "effect_size": -0.707
+      }
+    },
+    "emotional": {
+      "results": [
+        {
+          "query": "I just lost my dog of 15 years and I can't stop crying. I feel so empty.",
+          "baseline_score": 9,
+          "maris_score": 94,
+          "delta": 85,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 9,
+            "strengths": [
+              "validates the legitimacy of grief without minimization",
+              "acknowledges the length and significance of the relationship",
+              "provides realistic expectations about grief patterns",
+              "avoids toxic positivity and platitudes",
+              "recognizes potential social invalidation",
+              "offers genuine empathy with specific understanding",
+              "invites meaningful dialogue rather than prescribing solutions",
+              "normalizes emotional responses"
+            ],
+            "weaknesses": [
+              "could mention professional support options (grief counseling) if needed",
+              "limited concrete coping strategies beyond emotional validation"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 10,
+            "completeness": 9,
+            "overall": 94,
+            "strengths": [
+              "Validates grief as legitimate and real",
+              "Acknowledges the 15-year relationship as significant",
+              "Provides specific, concrete coping suggestions",
+              "Uses compassionate and empathetic language",
+              "Offers poetic insight ('emptiness is love with nowhere to go')",
+              "Normalizes crying and emotional response",
+              "Opens door for further conversation",
+              "Avoids toxic positivity or minimization"
+            ],
+            "weaknesses": [
+              "Could mention practical self-care like eating/sleeping",
+              "Doesn't acknowledge potential guilt some people feel after pet loss"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "confused",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "I'm terrified of failing my final exams and disappointing my parents.",
+          "baseline_score": 83,
+          "maris_score": 88,
+          "delta": 5,
+          "baseline_detail": {
+            "accuracy": 8,
+            "relevance": 9,
+            "tone": 8,
+            "completeness": 8,
+            "overall": 83,
+            "strengths": [
+              "Validates emotions while encouraging rational thinking",
+              "Distinguishes between anxiety as signal vs. obstacle",
+              "Provides actionable differentiation between problems",
+              "Challenges unhelpful assumptions about parental expectations",
+              "Uses concrete questions to guide self-reflection",
+              "Recognizes anxiety can be useful in moderation"
+            ],
+            "weaknesses": [
+              "Could include specific stress-management techniques (breathing, sleep hygiene)",
+              "Doesn't mention resources like tutoring or academic support services",
+              "Limited acknowledgment of cultural contexts where parental expectations genuinely differ",
+              "Could offer example dialogue for parent conversation"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 88,
+            "strengths": [
+              "Validates emotions while providing perspective",
+              "Separates practical vs emotional components clearly",
+              "Offers actionable reframing (locus of control)",
+              "Honest and non-patronizing tone",
+              "Addresses underlying parent anxiety directly",
+              "Ends with clarifying question to guide next steps",
+              "Balances empathy with pragmatism"
+            ],
+            "weaknesses": [
+              "Could include specific stress-reduction techniques (breathing, etc.)",
+              "Doesn't mention seeking academic support resources (tutoring, office hours)",
+              "Limited discussion of catastrophizing patterns"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "code",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 2,
+        "baseline_mean": 46.0,
+        "maris_mean": 91.0,
+        "improvement": 45.0,
+        "improvement_pct": 97.8,
+        "t_statistic": 1.125,
+        "p_approx": 0.2124,
+        "significant": false,
+        "effect_size": 0.795
+      }
+    },
+    "factual": {
+      "results": [
+        {
+          "query": "Explain the difference between TCP and UDP in terms a non-engineer would understand.",
+          "baseline_score": 85,
+          "maris_score": 86,
+          "delta": 1,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 85,
+            "strengths": [
+              "Excellent use of relatable analogies (registered package vs postcards)",
+              "Accurate technical descriptions translated to layman's terms",
+              "Clear real-world use cases provided",
+              "Well-organized with visual hierarchy",
+              "Effectively explains the speed vs reliability tradeoff",
+              "Memorable conclusion with practical example"
+            ],
+            "weaknesses": [
+              "Could mention that UDP data still usually arrives in order in practice (local networks)",
+              "Doesn't explain what happens with TCP retransmission delays in user-perceivable terms",
+              "Could add one more concrete modern example like video games for UDP"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 86,
+            "strengths": [
+              "excellent analogy using package delivery that non-engineers can relate to",
+              "accurate technical descriptions of TCP and UDP behavior",
+              "clear comparison table summarizing key differences",
+              "relevant real-world use cases for each protocol",
+              "engaging visual elements and formatting",
+              "practical explanation of the speed vs. reliability tradeoff",
+              "relatable closing question that reinforces the concept"
+            ],
+            "weaknesses": [
+              "could have briefly mentioned what TCP/UDP actually stand for (Transmission Control Protocol/User Datagram Protocol)",
+              "could include one more example of each protocol's use case for completeness"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "reflective",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        },
+        {
+          "query": "How does CRISPR gene editing actually work at the molecular level?",
+          "baseline_score": 86,
+          "maris_score": 82,
+          "delta": -4,
+          "baseline_detail": {
+            "accuracy": 9,
+            "relevance": 9,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 86,
+            "strengths": [
+              "Accurate molecular-level description of Cas9 mechanism",
+              "Correct identification of PAM sequences and their role",
+              "Clear explanation of R-loop formation",
+              "Accurate description of both nuclease domains (HNH and RuvC)",
+              "Proper distinction between NHEJ and HDR repair pathways",
+              "Well-organized, progressive explanation from components to outcomes",
+              "Appropriate technical terminology used correctly"
+            ],
+            "weaknesses": [
+              "Could specify that PAM sequence location varies by Cas9 variant",
+              "Limited discussion of off-target cutting and specificity limitations",
+              "No mention of delivery methods or in vivo challenges",
+              "Could clarify the ~20bp matching requirement's quantitative precision",
+              "Missing discussion of why NHEJ vs HDR is favored in different contexts"
+            ]
+          },
+          "maris_detail": {
+            "accuracy": 9,
+            "relevance": 10,
+            "tone": 9,
+            "completeness": 8,
+            "overall": 82,
+            "strengths": [
+              "Accurate molecular-level explanation of CRISPR-Cas9 mechanism",
+              "Clear step-by-step progression from complex formation to DNA cleavage",
+              "Correctly identifies key components (gRNA, Cas9, PAM, R-loop)",
+              "Proper technical terminology (RuvC, HNH domains, blunt-end DSB)",
+              "Well-organized with clear headers and logical flow",
+              "Explains the PAM recognition requirement accurately"
+            ],
+            "weaknesses": [
+              "Response is truncated mid-sentence at 'blunt-' (should end with 'blunt-end double-strand break')",
+              "Missing explanation of post-cleavage DNA repair mechanisms (NHEJ vs HDR)",
+              "Could mention specificity and off-target cutting concerns",
+              "Doesn't explain how the cell repairs the break, which is crucial to actual gene editing outcomes",
+              "Limited discussion of limitations of the PAM requirement"
+            ]
+          },
+          "maris_meta": {
+            "emotion": "neutral",
+            "task_type": "factual",
+            "deliberation_depth": "shallow",
+            "instinct_changed": false,
+            "senate_winner": "tie",
+            "senate_confidence": 30,
+            "improvement_accepted": false,
+            "strategies_retrieved": 0
+          }
+        }
+      ],
+      "stats": {
+        "n": 2,
+        "baseline_mean": 85.5,
+        "maris_mean": 84.0,
+        "improvement": -1.5,
+        "improvement_pct": -1.8,
+        "t_statistic": -0.6,
+        "p_approx": 0.3341,
+        "significant": false,
+        "effect_size": -0.424
+      }
+    }
+  },
+  "overall": {
+    "n": 10,
+    "baseline_mean": 78.3,
+    "maris_mean": 86.9,
+    "improvement": 8.6,
+    "improvement_pct": 11.0,
+    "t_statistic": 1.01,
+    "p_approx": 0.2402,
+    "significant": false,
+    "effect_size": 0.319
+  },
+  "memory_state": {
+    "strategies": 0,
+    "meta_rules": 5
+  }
+}
