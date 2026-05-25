@@ -37,5 +37,364 @@
     "hypothesis": "Responses that frontload uncertainty and explore multiple moral frameworks will produce higher quality outcomes than ove",
     "stderr_preview": "Traceback (most recent call last):\n  File \"/tmp/maris_consequence_eq63uu0e.py\", line 22, in <module>\n  File \"/tmp/maris_consequence_eq63uu0e.py\", line 11, in _guarded_import\n  File \"/tmp/maris_consequ",
     "ts": "2026-05-24T18:09:07.134346"
+  },
+  {
+    "event": "search_backend_installed",
+    "available": [
+      "anthropic_websearch",
+      "duckduckgo_html"
+    ],
+    "selected": "auto",
+    "ts": "2026-05-24T22:34:45.975244"
+  },
+  {
+    "event": "internal_state_loaded",
+    "state": {
+      "frustration": 0.131,
+      "satisfaction": -0.05700000000000001,
+      "curiosity": 0.12000000000000002,
+      "anxiety": 0.056999999999999995,
+      "excitement": 0.020000000000000004,
+      "warmth": 0.0
+    },
+    "ts": "2026-05-24T22:34:45.976791"
+  },
+  {
+    "event": "embedding_provider_installed",
+    "provider": "tfidf",
+    "ts": "2026-05-24T22:34:45.978012"
+  },
+  {
+    "event": "v9_installed",
+    "ts": "2026-05-24T22:34:45.978973"
+  },
+  {
+    "event": "search_backend_installed",
+    "available": [
+      "anthropic_websearch",
+      "duckduckgo_html"
+    ],
+    "selected": "auto",
+    "ts": "2026-05-25T17:16:43.625465"
+  },
+  {
+    "event": "internal_state_loaded",
+    "state": {
+      "frustration": 0.131,
+      "satisfaction": -0.05700000000000001,
+      "curiosity": 0.12000000000000002,
+      "anxiety": 0.056999999999999995,
+      "excitement": 0.020000000000000004,
+      "warmth": 0.0
+    },
+    "ts": "2026-05-25T17:16:43.626657"
+  },
+  {
+    "event": "embedding_provider_installed",
+    "provider": "tfidf",
+    "ts": "2026-05-25T17:16:43.627300"
+  },
+  {
+    "event": "v9_installed",
+    "ts": "2026-05-25T17:16:43.627886"
+  },
+  {
+    "event": "search_backend_installed",
+    "available": [
+      "anthropic_websearch",
+      "duckduckgo_html"
+    ],
+    "selected": "auto",
+    "ts": "2026-05-25T21:07:00.572879"
+  },
+  {
+    "event": "internal_state_loaded",
+    "state": {
+      "frustration": 0.131,
+      "satisfaction": -0.05700000000000001,
+      "curiosity": 0.12000000000000002,
+      "anxiety": 0.056999999999999995,
+      "excitement": 0.020000000000000004,
+      "warmth": 0.0
+    },
+    "ts": "2026-05-25T21:07:00.577652"
+  },
+  {
+    "event": "embedding_provider_installed",
+    "provider": "tfidf",
+    "ts": "2026-05-25T21:07:00.579292"
+  },
+  {
+    "event": "v9_installed",
+    "ts": "2026-05-25T21:07:00.579786"
+  },
+  {
+    "event": "search_success",
+    "backend": "anthropic_websearch",
+    "query": "productivity techniques for engineers",
+    "count": 4,
+    "ts": "2026-05-25T21:07:35.441682"
+  },
+  {
+    "event": "search_backend_installed",
+    "available": [
+      "anthropic_websearch",
+      "duckduckgo_html"
+    ],
+    "selected": "auto",
+    "ts": "2026-05-25T21:10:31.185036"
+  },
+  {
+    "event": "internal_state_loaded",
+    "state": {
+      "frustration": -0.0024496250000000178,
+      "satisfaction": 0.125244875,
+      "curiosity": 0.21904500000000002,
+      "anxiety": 0.06100512499999998,
+      "excitement": 0.15298250000000002,
+      "warmth": 0.0
+    },
+    "ts": "2026-05-25T21:10:31.186512"
+  },
+  {
+    "event": "embedding_provider_installed",
+    "provider": "tfidf",
+    "ts": "2026-05-25T21:10:31.187261"
+  },
+  {
+    "event": "v9_installed",
+    "ts": "2026-05-25T21:10:31.187874"
+  },
+  {
+    "event": "search_success",
+    "backend": "anthropic_websearch",
+    "query": "explanation techniques that work practical methods not theory",
+    "count": 6,
+    "ts": "2026-05-25T21:12:34.004225"
+  },
+  {
+    "event": "perception_strategy_added",
+    "query": "explanation techniques that work practical methods not theory",
+    "strategy": "Break down complex explanations into core elements and test understanding before adding details",
+    "confidence": 85,
+    "ts": "2026-05-25T21:12:37.695420"
+  },
+  {
+    "event": "consequence_tested",
+    "strategy": "Break down complex explanations into core elements and test understanding before adding details",
+    "outcome": "crash",
+    "hypothesis": "Breaking down explanations into core elements and testing understanding before adding details leads to better comprehens",
+    "stderr_preview": "Traceback (most recent call last):\n  File \"/tmp/maris_consequence_ap_69d9w.py\", line 22, in <module>\n  File \"/tmp/maris_consequence_ap_69d9w.py\", line 11, in _guarded_import\n  File \"/tmp/maris_consequ",
+    "ts": "2026-05-25T21:12:47.260857"
+  },
+  {
+    "event": "search_backend_installed",
+    "available": [
+      "anthropic_websearch",
+      "duckduckgo_html"
+    ],
+    "selected": "auto",
+    "ts": "2026-05-25T21:23:40.018596"
+  },
+  {
+    "event": "internal_state_loaded",
+    "state": {
+      "frustration": 0.05755037499999998,
+      "satisfaction": 0.105244875,
+      "curiosity": 0.259045,
+      "anxiety": 0.08100512499999998,
+      "excitement": 0.15298250000000002,
+      "warmth": 0.0
+    },
+    "ts": "2026-05-25T21:23:40.022764"
+  },
+  {
+    "event": "embedding_provider_installed",
+    "provider": "voyage",
+    "ts": "2026-05-25T21:23:40.023580"
+  },
+  {
+    "event": "v9_installed",
+    "ts": "2026-05-25T21:23:40.024319"
+  },
+  {
+    "event": "search_backend_installed",
+    "available": [
+      "anthropic_websearch",
+      "duckduckgo_html"
+    ],
+    "selected": "auto",
+    "ts": "2026-05-25T21:26:02.176768"
+  },
+  {
+    "event": "internal_state_loaded",
+    "state": {
+      "frustration": 0.05755037499999998,
+      "satisfaction": 0.105244875,
+      "curiosity": 0.259045,
+      "anxiety": 0.08100512499999998,
+      "excitement": 0.15298250000000002,
+      "warmth": 0.0
+    },
+    "ts": "2026-05-25T21:26:02.177448"
+  },
+  {
+    "event": "embedding_provider_installed",
+    "provider": "voyage",
+    "ts": "2026-05-25T21:26:02.178133"
+  },
+  {
+    "event": "v9_installed",
+    "ts": "2026-05-25T21:26:02.178704"
+  },
+  {
+    "event": "search_backend_installed",
+    "available": [
+      "anthropic_websearch",
+      "duckduckgo_html"
+    ],
+    "selected": "auto",
+    "ts": "2026-05-25T21:26:57.754407"
+  },
+  {
+    "event": "internal_state_loaded",
+    "state": {
+      "frustration": 0.05755037499999998,
+      "satisfaction": 0.105244875,
+      "curiosity": 0.259045,
+      "anxiety": 0.08100512499999998,
+      "excitement": 0.15298250000000002,
+      "warmth": 0.0
+    },
+    "ts": "2026-05-25T21:26:57.755382"
+  },
+  {
+    "event": "embedding_provider_installed",
+    "provider": "voyage",
+    "ts": "2026-05-25T21:26:57.756412"
+  },
+  {
+    "event": "v9_installed",
+    "ts": "2026-05-25T21:26:57.757355"
+  },
+  {
+    "event": "search_backend_installed",
+    "available": [
+      "anthropic_websearch",
+      "duckduckgo_html"
+    ],
+    "selected": "auto",
+    "ts": "2026-05-25T21:38:56.329157"
+  },
+  {
+    "event": "internal_state_loaded",
+    "state": {
+      "frustration": 0.05755037499999998,
+      "satisfaction": 0.105244875,
+      "curiosity": 0.259045,
+      "anxiety": 0.08100512499999998,
+      "excitement": 0.15298250000000002,
+      "warmth": 0.0
+    },
+    "ts": "2026-05-25T21:38:56.330056"
+  },
+  {
+    "event": "embedding_provider_installed",
+    "provider": "voyage",
+    "ts": "2026-05-25T21:38:56.331265"
+  },
+  {
+    "event": "v9_installed",
+    "ts": "2026-05-25T21:38:56.332388"
+  },
+  {
+    "event": "search_backend_installed",
+    "available": [
+      "anthropic_websearch",
+      "duckduckgo_html"
+    ],
+    "selected": "auto",
+    "ts": "2026-05-25T22:05:32.563922"
+  },
+  {
+    "event": "internal_state_loaded",
+    "state": {
+      "frustration": 0.05755037499999998,
+      "satisfaction": 0.105244875,
+      "curiosity": 0.259045,
+      "anxiety": 0.08100512499999998,
+      "excitement": 0.15298250000000002,
+      "warmth": 0.0
+    },
+    "ts": "2026-05-25T22:05:32.565048"
+  },
+  {
+    "event": "embedding_provider_installed",
+    "provider": "voyage",
+    "ts": "2026-05-25T22:05:32.566377"
+  },
+  {
+    "event": "v9_installed",
+    "ts": "2026-05-25T22:05:32.567596"
+  },
+  {
+    "event": "search_backend_installed",
+    "available": [
+      "anthropic_websearch",
+      "duckduckgo_html"
+    ],
+    "selected": "auto",
+    "ts": "2026-05-25T22:06:10.875019"
+  },
+  {
+    "event": "internal_state_loaded",
+    "state": {
+      "frustration": 0.05755037499999998,
+      "satisfaction": 0.105244875,
+      "curiosity": 0.259045,
+      "anxiety": 0.08100512499999998,
+      "excitement": 0.15298250000000002,
+      "warmth": 0.0
+    },
+    "ts": "2026-05-25T22:06:10.876153"
+  },
+  {
+    "event": "embedding_provider_installed",
+    "provider": "voyage",
+    "ts": "2026-05-25T22:06:10.877515"
+  },
+  {
+    "event": "v9_installed",
+    "ts": "2026-05-25T22:06:10.878766"
+  },
+  {
+    "event": "search_backend_installed",
+    "available": [
+      "anthropic_websearch",
+      "duckduckgo_html"
+    ],
+    "selected": "auto",
+    "ts": "2026-05-25T22:19:51.730897"
+  },
+  {
+    "event": "internal_state_loaded",
+    "state": {
+      "frustration": 0.15258014593749997,
+      "satisfaction": 0.05903942218749998,
+      "curiosity": 0.3071600125,
+      "anxiety": 0.05552620281249998,
+      "excitement": 0.13052985625000002,
+      "warmth": 0.0
+    },
+    "ts": "2026-05-25T22:19:51.732140"
+  },
+  {
+    "event": "embedding_provider_installed",
+    "provider": "voyage",
+    "ts": "2026-05-25T22:19:51.733100"
+  },
+  {
+    "event": "v9_installed",
+    "ts": "2026-05-25T22:19:51.733918"
   }
 ]

@@ -1,0 +1,61 @@
+[
+  {
+    "kind": "turn_start",
+    "payload": {
+      "input": "Can you recall why did we say softwares are always built with some kind of bugs and errors in them?"
+    },
+    "ts": "2026-05-25T22:21:56.875930"
+  },
+  {
+    "kind": "emotion",
+    "payload": {
+      "user_mood": "neutral",
+      "maris_mood": "curiosity",
+      "maris_intensity": 0.261
+    },
+    "ts": "2026-05-25T22:21:56.877487"
+  },
+  {
+    "kind": "task",
+    "payload": {
+      "type": "creative",
+      "tokens": 800
+    },
+    "ts": "2026-05-25T22:21:56.878188"
+  },
+  {
+    "kind": "stage",
+    "payload": {
+      "stage": 1,
+      "name": "CHILD"
+    },
+    "ts": "2026-05-25T22:21:56.878562"
+  },
+  {
+    "kind": "monologue",
+    "payload": {
+      "depth": "shallow",
+      "confidence": 82,
+      "instinct_changed": false
+    },
+    "ts": "2026-05-25T22:22:07.165407"
+  },
+  {
+    "kind": "drive_resolver",
+    "payload": {
+      "overridden": false,
+      "action": "none",
+      "reason": ""
+    },
+    "ts": "2026-05-25T22:22:07.166035"
+  },
+  {
+    "kind": "senate",
+    "payload": {
+      "accepted": true,
+      "winner": "B",
+      "confidence": 67
+    },
+    "ts": "2026-05-25T22:38:27.618321"
+  }
+]

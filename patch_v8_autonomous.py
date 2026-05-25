@@ -368,7 +368,20 @@ class ConsequenceLearning:
         self.max_memory_mb = max_memory_mb
 
     # ── generation ─────────────────────────────────────────────────────────
+    def _is_likely_testable(self, strategy_text: str) -> bool:
+        """Heuristic: skip emotional/instructional/social strategies."""
+        s = (strategy_text or "").lower()
+        non_testable = [
+            "validate", "acknowledge", "feeling", "emotion", "warmth",
+            "empathy", "patience", "kindness", "tone", "rapport",
+            "before adding", "before providing", "before exploring",
+            "ground responses", "ground abstract",
+        ]
+        return not any(p in s for p in non_testable)
+
     def generate_test(self, strategy: Dict) -> Optional[Dict]:
+        if not self._is_likely_testable(strategy.get("strategy", "")):
+            return None  # marks as skip_no_test instead of crash
         if _client is None:
             return None
         allowed = ", ".join(sorted(_SANDBOX_ALLOWED_IMPORTS))
