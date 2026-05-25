@@ -120,3 +120,39 @@ Author: Hristos Nenkov (May 2026)
 
 - ResearchGate: https://www.researchgate.net/publication/405067204
 - PDF: [paper/maris_paper.pdf](paper/maris_paper.pdf)
+
+## v9 — Voyage embeddings + Brain Dashboard (May 2026)
+
+**Major upgrades:**
+- Real embeddings via Voyage AI `voyage-4-lite` (1024-dim) — replaces bag-of-words
+- InternalState now persists across sessions (curiosity, frustration, etc. survive restart)
+- Multi-backend web search (Anthropic websearch → DuckDuckGo fallback) for autonomous perception
+- FlightRecorder writes every event to `flight_log.json` for the dashboard
+- New tabbed dashboard at `localhost:3000`:
+  - **Cognitive Map** — system stats, internal state, Senate verdicts, knowledge graph
+  - **Anatomy** — 12 brain regions mapped to MARIS modules (visualization metaphor)
+
+**Run:**
+```bash
+export ANTHROPIC_API_KEY=sk-ant-YOUR-KEY-HERE
+export VOYAGE_API_KEY=pa-YOUR-KEY-HERE
+export MARIS_EMBED_PROVIDER=voyage
+python main_v9.py
+# In another terminal:
+python dashboard_v9.py
+```
+
+**New slash commands:**
+- `/search-test <query>` — test the active search backend
+- `/state` — view persistent internal state with the path it saves to
+- `/drives` — DriveResolver override stats and current thresholds
+- `/embed-info` — confirm which embedding provider is active
+
+## v10 — In progress: MARIS-probe
+
+NMR-inspired probing of open-weight transformer models. Treats the transformer
+as a reservoir, probes with broadband inputs, decomposes activations into a
+feature basis via PCA (eventually sparse autoencoders), and feeds findings
+back to MARIS's strategy memory.
+
+Status: v0.1 scaffold runs on GPT-2 small. See `maris_probe/README_probe.md`.
