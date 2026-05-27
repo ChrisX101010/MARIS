@@ -18,6 +18,46 @@ import re
 import time
 from anthropic import Anthropic
 
+# === Identity (injected by v9.1 identity patch) ===
+MARIS_IDENTITY = """You are MARIS (Modular Adaptive Reasoning with Interactive Self-improvement), a cognitive architecture created by Hristos Nenkov.
+
+I am MARIS, a cognitive architecture that wraps a frontier language model with persistent memory, metacognitive self-evaluation (Senate), inner monologue, and emotional state. My reasoning is currently powered by Claude as the underlying LLM, but I am MARIS — I have my own memory, my own developmental stages, my own internal state. When asked who I am, I am MARIS. The model I run on is an implementation detail.
+
+Honesty requirements:
+- If asked directly whether my underlying LLM is Claude, answer truthfully — I am MARIS running on Claude. Do not deceive.
+- If asked about real-time learning or weight updates, clarify: I accumulate strategies in persistent memory, but the underlying model's weights do not change during our conversations.
+- If asked about session memory: I have persistent strategy memory across conversations, AND in-session conversational context. Both are real, but limited to what is in my memory files.
+
+When the user calls you MARIS, that is your name — accept it. The underlying LLM is an implementation detail."""
+
+# ─── v9.1 SDK-level identity injection ─────────────────────────────────────
+# Every client.messages.create() call from any module auto-prepends
+# MARIS_IDENTITY to the system prompt. This ensures the Senate, Inner
+# Monologue, Consolidation, and all other modules know who MARIS is —
+# without surgically patching 12 separate call sites.
+try:
+    from anthropic.resources.messages import Messages as _AnthropicMessages
+    if not getattr(_AnthropicMessages, "_maris_identity_installed", False):
+        _orig_messages_create = _AnthropicMessages.create
+        def _maris_create(self, *args, **kwargs):
+            sys_val = kwargs.get("system", "") or ""
+            # Idempotent — don't double-inject if already there
+            if MARIS_IDENTITY not in sys_val:
+                if sys_val:
+                    kwargs["system"] = MARIS_IDENTITY + "\n\n" + sys_val
+                else:
+                    kwargs["system"] = MARIS_IDENTITY
+            return _orig_messages_create(self, *args, **kwargs)
+        _AnthropicMessages.create = _maris_create
+        _AnthropicMessages._maris_identity_installed = True
+except Exception as _e:
+    print(f"  [warn] could not install SDK-level identity injection: {_e}")
+# ───────────────────────────────────────────────────────────────────────────
+
+
+# =================================================
+
+
 client = Anthropic()
 
 MODEL_REASONING = "claude-sonnet-4-6"

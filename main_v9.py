@@ -100,6 +100,11 @@ def main():
         from patch_v9 import install_v9
         install_v9(ai, embedding_provider=args.embed)
         try:
+            from patch_v10_mood_colors import install_mood_colors
+            install_mood_colors(ai)
+        except ImportError:
+            pass
+        try:
             from patch_v9_flight_persist import install_flight_persistence
             install_flight_persistence(ai)
             print("    v9 flight persistence installed")
